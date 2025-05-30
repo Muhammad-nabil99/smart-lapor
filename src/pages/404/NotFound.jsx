@@ -13,7 +13,6 @@ export default function NotFound() {
                                 <i class="fa-solid fa-chevron-left me-2"></i>
                                         Kembali ke halaman utama
                         </button>
-                        <Button color={blue}>test</Button>
                 </div>
         )
 }

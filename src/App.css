@@ -7,3 +7,9 @@ html, body, a, button {
 a, li, button {
         cursor: pointer;
 }
+
+.TextInput input {
+        padding: 20px;
+        background-color: white;
+        color: black;
+}
