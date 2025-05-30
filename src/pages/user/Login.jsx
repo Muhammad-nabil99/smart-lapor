@@ -1,6 +1,6 @@
 import { Button, Label, TextInput } from "flowbite-react"
 
-export default function Daftar() {
+export default function Login() {
         return (
                 <div className="h-[100vh] flex items-center justify-center bg-[#FAFBFD]">
                         <div className="w-[400px] rounded-sm shadow-md/20 p-10  !bg-white m-5">
@@ -18,38 +18,18 @@ export default function Daftar() {
                                         </svg>
                                 </div>
 
-                                <p className="font-extrabold mt-5 text-xl text-center">Daftar </p>
+                                <p className="font-extrabold mt-5 text-xl text-center">Masuk </p>
 
-                                <div className="grid grid-cols-2 gap-3 mt-10">
-                                        <div id="input-nama">
-                                                <TextInput
-                                                        type="text"
-                                                        placeholder="Nama"
-                                                        className="TextInput"
-                                                        required
-                                                />
-                                        </div>
-                                        <div id="input-telepon">
-                                                <TextInput
-                                                        type="tel"
-                                                        placeholder="Phone"
-                                                        className="TextInput"
-                                                        required
-                                                />
-                                        </div>
-                                </div>
-
-                                <div className="light mt-3">
+                                <div className="mt-10">
                                         <TextInput
-                                                type="email"
-                                                placeholder="Email"
+                                                type="text"
+                                                placeholder="Nama"
                                                 className="TextInput"
                                                 required
                                         />
                                 </div>
 
                                 <div className="mt-3">
-                                        <Label htmlFor="sandi" value=""/>
                                                 <TextInput
                                                         type="password"
                                                         placeholder="Kata Sandi"
@@ -59,11 +39,11 @@ export default function Daftar() {
                                 </div>
 
                                 <div className="mt-10">
-                                        <Button color="dark" className="w-full p-7 font-bold text-base">Daftar</Button>
+                                        <Button color="dark" className="w-full p-7 font-bold text-base">Login</Button>
                                 </div>
 
                                 <div className="mt-2 text-sm">
-                                        <p>Sudah punya akun? <a href="/login/user" className="text-[#25F15E] hover:underline">Klik disini</a></p>
+                                        <p>Belum punya akun? <a href="/daftar/user" className="text-[#25F15E] hover:underline">Klik disini</a></p>
                                 </div>
                         </div>
                 </div>
