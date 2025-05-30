@@ -18,8 +18,8 @@ function App() {
         <Route path="/" element={<LandingPage />}></Route>
 
         {/* path user */}
-        <Route path="/user/login" element={<DaftarUser />}></Route>
-        <Route path="/user/daftar" element={<LoginUser />}></Route>
+        <Route path="/user/daftar" element={<DaftarUser />}></Route>
+        <Route path="/user/login" element={<LoginUser />}></Route>
         <Route path="/user/layout" element={<LayoutUser />}>
           <Route path="dashboard" element={<DashboardUser />}/>
         </Route>
