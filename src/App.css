@@ -17,3 +17,16 @@ a, li, button {
 #sidebar-user div.h-full.overflow-y-auto.overflow-x-hidden {
         background-color: white !important;
 }
+
+#sidebar-user div[data-testid="flowbite-sidebar-items"] li a:hover {
+        background-color: transparent;
+}
+
+#sidebar-user div[data-testid="flowbite-sidebar-items"] li button:hover{
+        background-color: #64C983;
+        transition: .2s ease-in-out;
+}
+
+#sidebar-user div[data-testid="flowbite-sidebar-items"] li button:hover svg path {
+        fill: white;
+}
