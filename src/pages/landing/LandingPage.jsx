@@ -102,7 +102,7 @@ export default function LandingPage() {
                                         <div id="card-role-body" className="pt-16">
                                                 <span className="font-bold text-xl">Masuk Sebagai</span>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-7">
-                                                        <div onClick={() => navigate("/daftar/instansi")} className="cursor-pointer rounded-md relative w-[320px] md:w-[400px] h-[320px] md:h-[350px] hover:scale-[1.015]">
+                                                        <div onClick={() => navigate("/instansi/daftar")} className="cursor-pointer rounded-md relative w-[320px] md:w-[400px] h-[320px] md:h-[350px] hover:scale-[1.015]">
                                                                 <img src={instansiImage} alt="instansi" className="object-cover rounded-md absolute w-full h-full"/>
                                                                 <div className="rounded-md flex items-center justify-center gap-2 absolute bottom-0 bg-black/50 z-10 w-full p-6 text-lg font-bold text-white">
                                                                         Instansi Pemerintah 
@@ -113,7 +113,7 @@ export default function LandingPage() {
                                                                 </div>
                                                         </div>
 
-                                                        <div onClick={() => navigate("/daftar/user")} className="cursor-pointer flex items-center gap-2 rounded-md relative w-[320px] md:w-[400px] h-[320px] md:h-[350px] hover:scale-[1.015]">
+                                                        <div onClick={() => navigate("/user/daftar")} className="cursor-pointer flex items-center gap-2 rounded-md relative w-[320px] md:w-[400px] h-[320px] md:h-[350px] hover:scale-[1.015]">
                                                                 <img src={userImage} alt="user" className="object-cover rounded-md absolute w-full h-full"/>
                                                                 <div className="rounded-md flex items-center gap-2 justify-center absolute bottom-0 bg-black/50 z-10 w-full p-6 text-lg font-bold text-white">
                                                                         Pengguna Umum

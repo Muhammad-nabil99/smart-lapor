@@ -13,3 +13,7 @@ a, li, button {
         background-color: white;
         color: black;
 }
+
+#sidebar-user div.h-full.overflow-y-auto.overflow-x-hidden {
+        background-color: white !important;
+}

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import question from "../../assets/question.png";
-import { Button } from "flowbite-react";
 
 export default function NotFound() {
         const navigate = useNavigate();

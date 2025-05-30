@@ -1,6 +1,6 @@
 import { Button, Label, TextInput } from "flowbite-react"
 
-export default function Login() {
+export default function LoginUser() {
         return (
                 <div className="h-[100vh] flex items-center justify-center bg-[#FAFBFD]">
                         <div className="w-[400px] rounded-sm shadow-md/20 p-10  !bg-white m-5">
@@ -43,7 +43,7 @@ export default function Login() {
                                 </div>
 
                                 <div className="mt-2 text-sm">
-                                        <p>Belum punya akun? <a href="/daftar/user" className="text-[#25F15E] hover:underline">Klik disini</a></p>
+                                        <p>Belum punya akun? <a href="/user/daftar" className="text-[#25F15E] hover:underline">Klik disini</a></p>
                                 </div>
                         </div>
                 </div>
