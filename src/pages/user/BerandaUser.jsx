@@ -1,8 +1,8 @@
 import imageCard from "../../assets/contoh.png"
 
-export default function DashboardUser() {
+export default function BerandaUser() {
         return (
-                <div className="p-4">
+                <section id="DashboardUser" className="p-4">
                         
                         <div className="grid grid-cols-2 gap-7">
                         
@@ -192,6 +192,6 @@ export default function DashboardUser() {
                                 </div>
                         </div>
 
-                </div>
+                </section>
         )
 }

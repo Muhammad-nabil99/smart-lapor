@@ -8,7 +8,7 @@ a, li, button {
         cursor: pointer;
 }
 
-.TextInput input {
+.TextInput input, .Textarea {
         padding: 20px;
         background-color: white;
         color: black;
