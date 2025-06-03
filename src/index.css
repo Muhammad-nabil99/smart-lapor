@@ -4,6 +4,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
+        --color-green-450: #CEFFDC;
         --color-pending: #FFCC00;
         --color-dot-pending: #FFBB00;
         --color-tolak: #F7451D;

@@ -8,10 +8,24 @@ a, li, button {
         cursor: pointer;
 }
 
-.TextInput input, .Textarea {
+.TextInput input, .Textarea, button[data-testid="flowbite-dropdown-target"] {
         padding: 20px;
         background-color: white;
         color: black;
+}
+
+button[data-testid="flowbite-dropdown-target"] {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        color: #969BA5;
+        font-weight: normal;
+        padding: 30px 20px;
+        border: 1px solid #969BA5;
+}
+
+div[data-testid="flowbite-dropdown"] {
+        width: 100%;
 }
 
 #sidebar-user div.h-full.overflow-y-auto.overflow-x-hidden {

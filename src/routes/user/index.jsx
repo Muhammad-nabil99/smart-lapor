@@ -6,6 +6,8 @@ import BerandaUser from "../../pages/user/BerandaUser";
 import LayoutUser from "../../Layout/user/LayoutUser";
 import TersesatUser from "../../pages/404/TersesatUser";
 import BuatLaporanUser from "../../pages/user/BuatLaproanUser";
+import Profil from "../../pages/user/Profil";
+import EditProfil from "../../pages/user/EditProfil";
 
 const UserRoutes = () => {
         return (
@@ -18,6 +20,8 @@ const UserRoutes = () => {
                         <Route element={<LayoutUser />}>
                                 <Route path="/beranda" element={<BerandaUser />} />
                                 <Route path="/buat-laporan" element={<BuatLaporanUser />} />
+                                <Route path="/profil" element={<Profil />}></Route>
+                                <Route path="/edit" element={<EditProfil />} />
 
                         </Route>
 
