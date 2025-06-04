@@ -16,7 +16,16 @@ export default function Laporan() {
                         <div className="conainer-card grid grid-cols-2 gap-5 mt-10">
                                 <div className="card p-4 shadow-md/30 rounded-md">
                                         <div className="card-header">
-                                                <span className="text-2xl font-extrabold">Kebakaran</span>
+                                                <div className="flex gap-1 items-center">
+                                                        <svg className="w-12 h-12" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <circle cx="21" cy="21" r="20.5" fill="#E6E6E6" stroke="#D9D9D9"/>
+                                                                <path d="M21 21C19.625 21 18.4479 20.5104 17.4687 19.5312C16.4896 18.5521 16 17.375 16 16C16 14.625 16.4896 13.4479 17.4687 12.4688C18.4479 11.4896 19.625 11 21 11C22.375 11 23.5521 11.4896 24.5312 12.4688C25.5104 13.4479 26 14.625 26 16C26 17.375 25.5104 18.5521 24.5312 19.5312C23.5521 20.5104 22.375 21 21 21ZM11 31V27.5C11 26.7917 11.1825 26.1408 11.5475 25.5475C11.9125 24.9542 12.3967 24.5008 13 24.1875C14.2917 23.5417 15.6042 23.0575 16.9375 22.735C18.2708 22.4125 19.625 22.2508 21 22.25C22.375 22.2492 23.7292 22.4108 25.0625 22.735C26.3958 23.0592 27.7083 23.5433 29 24.1875C29.6042 24.5 30.0887 24.9533 30.4537 25.5475C30.8187 26.1417 31.0008 26.7925 31 27.5V31H11Z" fill="#1A1A1A"/>
+                                                        </svg>
+                                                        <div className="my-2">
+                                                                <p className="font-bold text-md">Tolen</p>
+                                                                <p className="font-bold text-[.6rem]">Dibuat <span className="text-[.5rem] font-normal">20/03/2025</span></p>
+                                                        </div>
+                                                </div>
                                         </div>
                                         <div className="card-body mt-3">
                                                 <div className="flex gap-3">
@@ -37,6 +46,7 @@ export default function Laporan() {
                                                                 </div>
                                                         </div>
                                                         <div>
+                                                                <span className="text-2xl font-extrabold">Kebakaran</span>
                                                                 <p className="text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
                                                                 <div className="font-bold text-white p-1 px-3 rounded-full text-[.7rem] bg-pending/50 w-fit flex items-center gap-1 my-2">
                                                                         <svg className="w-2" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
