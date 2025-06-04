@@ -8,6 +8,7 @@ import TersesatUser from "../../pages/404/TersesatUser";
 import BuatLaporanUser from "../../pages/user/BuatLaproanUser";
 import Profil from "../../pages/user/Profil";
 import EditProfil from "../../pages/user/EditProfil";
+import RiwayatUser from "../../pages/user/RiwayatUser";
 
 const UserRoutes = () => {
         return (
@@ -21,6 +22,7 @@ const UserRoutes = () => {
                                 <Route path="/beranda" element={<BerandaUser />} />
                                 <Route path="/buat-laporan" element={<BuatLaporanUser />} />
                                 <Route path="/profil" element={<Profil />}></Route>
+                                <Route path="/riwayat" element={<RiwayatUser />} />
                                 <Route path="/edit" element={<EditProfil />} />
 
                         </Route>

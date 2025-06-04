@@ -51,7 +51,7 @@ export default function EditProfil() {
                                                 </div>
                                                 <div className="mb-3 relative">
                                                         <Label htmlFor="edit-gender" className="font-light text-base">Jenis Kelamin</Label>
-                                                        <Dropdown id="edit-gender" label="Jenis Kelamin" dismissOnClick={false} className="mt-1">
+                                                        <Dropdown id="edit-gender" label="Jenis Kelamin" dismissOnClick={false} className="Dropdown mt-1">
                                                                 <DropdownItem>
                                                                         <i className="fas fa-mars me-1"></i> Laki-laki
                                                                 </DropdownItem>
