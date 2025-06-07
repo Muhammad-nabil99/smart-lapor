@@ -4,7 +4,7 @@ import gambarSampul from '../../assets/sampul.png';
 import gambarProfil from "../../assets/profile.png";
 import { Button } from 'flowbite-react';
 
-export default function Profil() {
+export default function ProfilUser() {
 
         const navigate = useNavigate();
 
