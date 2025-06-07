@@ -61,16 +61,16 @@ export default function Laporan() {
                                         </div>
                                         <div className="card-footer mt-3">
                                                 <div className="flex gap-2 items-center justify-end font-bold">
-                                                        <button className="text-[.6rem] py-[8px] shadow-md/30 bg-[#4175D7] text-white rounded-xl px-3 flex items-center gap-1 boder border-[#2B60C1] outline-none">
-                                                                <svg className="w-2 h-2" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <button className="text-[.7rem] py-[8px] shadow-md/30 bg-[#4175D7] text-white rounded-xl px-3 flex items-center gap-1 boder border-[#2B60C1] outline-none">
+                                                                <svg className="w-3 h-3" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                         <path className="fill-white" d="M5.5 0.0313187L10.25 4.06299L9.14167 5.00371L6.29167 2.58471V8.7666H4.70833V2.58471L1.85833 5.00371L0.75 4.06299L5.5 0.0313187Z"/>
                                                                 </svg>     
-                                                                Bantu
+                                                                Bantu 
                                                         </button>
-                                                        <button className="text-[.6rem] py-[8px] shadow-md/30 bg-[#FFC8C8] text-red-600 rounded-xl px-3 flex items-center gap-1 boder border-[#FF0000] outline-none">
+                                                        <button className="text-[.7rem] py-[8px] shadow-md/30 bg-[#FFC8C8] text-red-600 rounded-xl px-3 flex items-center gap-1 boder border-[#FF0000] outline-none">
                                                                 Report
-                                                                <img src={gambarIkonReport} alt="icon report" className="w-3 h-3"/>
-                                                        </button>
+                                                                <img src={gambarIkonReport} alt="icon report" className="w-4 h-4"/>
+                                                        </button>  
                                                 </div>
                                         </div>
                                 </div>
