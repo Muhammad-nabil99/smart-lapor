@@ -8,6 +8,7 @@ import {
 } from "flowbite-react";
 
 export default function SidebarUser({ isOpen }) {
+        
         return (
                 <Sidebar
                         id="sidebar-user"

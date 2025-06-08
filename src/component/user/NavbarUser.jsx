@@ -3,16 +3,22 @@ import {
         NavbarBrand,
         Button
 } from "flowbite-react";
-import { useEffect } from "react";
 
-export default function NavbarUser({ setIsOpen, isOpen }) {
+export default function NavbarUser({ setIsOpen }) {
+
+        const handleOpenSidebarUser = () => {
+                const open = localStorage.getItem('openSidebarUser') === 'true';
+                setIsOpen(!open);
+                console.log(!open);
+                localStorage.setItem('openSidebarUser', !open);
+        }
 
         return (
                 <Navbar fluid className="p-4 w-full sticky top-0 z-20">
                         <div className="flex items-center gap-2">
                                 <button
                                         className="border-none focus:shadow-none outline-none bg-none"
-                                        onClick={() => setIsOpen(!isOpen)}
+                                        onClick={() => handleOpenSidebarUser()}
                                 >
                                         <svg className="w-7 h-7" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M8.54167 35.875C7.60208 35.875 6.79803 35.5407 6.1295 34.8722C5.46097 34.2037 5.12614 33.3991 5.125 32.4583V8.54167C5.125 7.60208 5.45983 6.79803 6.1295 6.1295C6.79917 5.46097 7.60322 5.12614 8.54167 5.125H32.4583C33.3979 5.125 34.2025 5.45983 34.8722 6.1295C35.5419 6.79917 35.8761 7.60322 35.875 8.54167V32.4583C35.875 33.3979 35.5407 34.2025 34.8722 34.8722C34.2037 35.5419 33.3991 35.8761 32.4583 35.875H8.54167ZM20.5 32.4583H32.4583V8.54167H20.5V32.4583Z" fill="black"/>
