@@ -12,7 +12,7 @@ export default function Laporan() {
                 <section className="p-4">
                         <div className="brand flex items-center gap-2">
                                 <svg className="w-6 h-6" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M15 7.5V15L20 17.5M27.5 15C27.5 21.9036 21.9036 27.5 15 27.5C8.09644 27.5 2.5 21.9036 2.5 15C2.5 8.09644 8.09644 2.5 15 2.5C21.9036 2.5 27.5 8.09644 27.5 15Z" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M15 7.5V15L20 17.5M27.5 15C27.5 21.9036 21.9036 27.5 15 27.5C8.09644 27.5 2.5 21.9036 2.5 15C2.5 8.09644 8.09644 2.5 15 2.5C21.9036 2.5 27.5 8.09644 27.5 15Z" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                                 <span className="text-xl font-normal">Laporan</span>
                         </div>
