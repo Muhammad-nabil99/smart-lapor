@@ -14,8 +14,8 @@ export default function RiwayatUser() {
                         </div>
                         <hr className="border-2 border-gray-100 my-5"/>
 
-                        <div className="flex items-center gap-4 ">
-                                <Dropdown label="Urutkan" className="my-3 relative bg-white text-dark border border-gray-200 hover:bg-white" dismissOnClick={false}>
+                        <div className="flex flex-col sm:flex-row mb-3 items-start sm:items-center gap-0 sm:gap-4 ">
+                                <Dropdown label="Urutkan" className="my-3 sm:w-auto relative bg-white text-dark border border-gray-200 hover:bg-white" dismissOnClick={false}>
                                         <DropdownItem>test</DropdownItem>
                                         <DropdownItem>test</DropdownItem>
                                         <DropdownItem>test</DropdownItem>
@@ -24,24 +24,23 @@ export default function RiwayatUser() {
                                 <TextInput
                                         type="search"
                                         placeholder="Cari..."
-                                        className=""
                                 />
                         </div>
 
                         {/* kumpulan card laporan */}
-                        <div className="conainer-card grid grid-cols-2 gap-5">
+                        <div className="conainer-card grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 {/* list card */}
                                 <div className="card p-4 shadow-md/30 rounded-md">
                                         <div className="card-header">
                                                 <span className="text-2xl font-extrabold">Kecelakaan</span>
                                         </div>
                                         <div className="card-body mt-3">
-                                                <div className="flex gap-3">
+                                                <div className="flex lg:flex-row flex-col gap-3">
                                                         <div className="w-full">
-                                                                <img src={gambarKecelakaan} className="w-full h-full" alt="gambar kecelakaan" />
+                                                                <img src={gambarKecelakaan} className="w-full h-48 rounded lg:h-full object-cover" alt="gambar kecelakaan" />
                                                         </div>
                                                         <div>
-                                                                <p className="text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
+                                                                <p className="text-base line-clamp-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
                                                                 <p className="text-xs italic mt-1">Deadline : 1 Mei - 5 Mei 2025</p>
                                                                 <div className="p-1 px-3 rounded-full text-[.7rem] bg-selesai w-fit flex items-center gap-1 mt-2">
                                                                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +49,6 @@ export default function RiwayatUser() {
                                                                         Selesai
                                                                 </div>
                                                         </div>
-                                                        
                                                 </div>
                                         </div>
                                         <div className="card-footer mt-3 text-sm">
@@ -68,14 +66,15 @@ export default function RiwayatUser() {
                                         </div>
                                 </div>
 
+                                {/* card dibawah ini dan seterusnya abaikan saja.. yang diambil hanya 1 card di atas untuk dilooping */}
                                 <div className="card p-4 shadow-md/30 rounded-md">
                                         <div className="card-header">
                                                 <span className="text-2xl font-extrabold">Kebakaran</span>
                                         </div>
                                         <div className="card-body mt-3">
-                                                <div className="flex gap-3">
+                                                <div className="flex flex-col lg:flex-row gap-3">
                                                         <div className="w-full">
-                                                                <img src={gambarKebakaran} className="w-full h-full" alt="gambar kecelakaan" />
+                                                                <img src={gambarKebakaran} className="w-full h-48 rounded lg:h-full object-cover" alt="gambar kecelakaan" />
                                                         </div>
                                                         <div>
                                                                 <p className="text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
@@ -110,9 +109,9 @@ export default function RiwayatUser() {
                                                 <span className="text-2xl font-extrabold">Kecelakaan</span>
                                         </div>
                                         <div className="card-body mt-3">
-                                                <div className="flex gap-3">
+                                                <div className="flex flex-col lg:flex-row gap-3">
                                                         <div className="w-full">
-                                                                <img src={gambarKecelakaan} className="w-full h-full" alt="gambar kecelakaan" />
+                                                                <img src={gambarKecelakaan} className="w-full h-48 rounded lg:h-full object-cover" alt="gambar kecelakaan" />
                                                         </div>
                                                         <div>
                                                                 <p className="text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>

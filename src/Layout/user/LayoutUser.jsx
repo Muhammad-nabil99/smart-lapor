@@ -2,11 +2,11 @@ import { Outlet } from "react-router-dom";
 import SidebarUser from "../../component/user/SidebarUser";
 import NavbarUser from "../../component/user/NavbarUser";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function LayoutUser() {
 
-        const [isOpen, setIsOpen] = useState('false');
+        const [isOpen, setIsOpen] = useState(localStorage.getItem('openSidebarUser') ? 'true' : 'false');
 
         return (
                 <div className="flex gap-2 flex-nowrap">

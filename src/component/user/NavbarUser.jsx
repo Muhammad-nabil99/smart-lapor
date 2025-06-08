@@ -9,7 +9,6 @@ export default function NavbarUser({ setIsOpen }) {
         const handleOpenSidebarUser = () => {
                 const open = localStorage.getItem('openSidebarUser') === 'true';
                 setIsOpen(!open);
-                console.log(!open);
                 localStorage.setItem('openSidebarUser', !open);
         }
 
