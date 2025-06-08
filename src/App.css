@@ -8,6 +8,10 @@ a, li, button {
         cursor: pointer;
 }
 
+html.dark .TextInput input, .Textarea, button[data-testid="flowbite-dropdown-target"].Dropdown {
+        background-color: #111827;
+        color: white;
+}
 .TextInput input, .Textarea, button[data-testid="flowbite-dropdown-target"].Dropdown {
         padding: 20px;
         background-color: white;
@@ -30,6 +34,10 @@ button[data-testid="flowbite-dropdown-target"].Dropdown div[data-testid="flowbit
 
 #sidebar-user div.h-full.overflow-y-auto.overflow-x-hidden {
         background-color: white !important;
+}
+
+html.dark #sidebar-user div.h-full.overflow-y-auto.overflow-x-hidden {
+        background-color: #111827 !important;
 }
 
 #sidebar-user div[data-testid="flowbite-sidebar-items"] li a:hover {

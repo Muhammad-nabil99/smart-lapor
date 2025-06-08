@@ -21,6 +21,8 @@ export default function Laporan() {
 
                                 {/* lakukan looping disini dan card template nya seperti contoh di bawah */}
                                 <div className="card p-4 shadow-md/30 rounded-md">
+
+                                        {/* header card */}
                                         <div className="card-header">
                                                 <div className="flex gap-1 items-center">
                                                         <svg className="w-12 h-12" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +35,8 @@ export default function Laporan() {
                                                         </div>
                                                 </div>
                                         </div>
+                                
+                                        {/* body card */}
                                         <div className="card-body mt-3">
                                                 <div className="flex gap-3 flex-col lg:flex-row">
                                                         <div className="w-full h-50 lg:h-auto">
@@ -65,17 +69,17 @@ export default function Laporan() {
                                                         
                                                 </div>
                                         </div>
+
+                                        {/* footer card */}
                                         <div className="card-footer mt-3">
-                                                <div className="flex justify-end sm:hidden relative">
-                                                        <Button
-                                                                onClick={() => setVisibleDropdownBuatan(!visibleDropdownBuatan)}
-                                                                className="h-9 outline-none border-none shadow-none
-                                                                                bg-transparent text-black px-1 hover:bg-transparent"
+                                                <div className="group flex justify-end sm:hidden relative">
+                                                        <Button className="h-9 outline-none border-none shadow-none
+                                                                                        bg-transparent text-black px-1 hover:bg-transparent"
                                                         >
                                                                 <i className="fas fa-ellipsis-vertical"></i>
                                                         </Button>
 
-                                                        <div className={`dropdown-buatan ${visibleDropdownBuatan ? "flex" : "hidden"} flex-col gap-2 absolute rounded-md bottom-[100%] bg-white p-3 mt-1 shadow-md/30`}>
+                                                        <div className={`dropdown-buatan hidden group-hover:!flex flex-col gap-2 absolute rounded-md bottom-[100%] bg-white p-3 mt-1 shadow-md/30`}>
                                                                 <div>
                                                                         <button className="text-[.7rem] py-[8px] shadow-md/30 bg-[#4175D7] text-white rounded-xl px-3 flex items-center gap-1 boder border-[#2B60C1] outline-none">
                                                                                 <svg className="w-3 h-3" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,6 +114,8 @@ export default function Laporan() {
 
                                 {/* jangan perdulikan 2 card duplikasi di bawah.. nanti bakalan di hapus kalau udah ada data backend untuk looping */}
                                 <div className="card p-4 shadow-md/30 rounded-md">
+
+                                        {/* header card */}
                                         <div className="card-header">
                                                 <div className="flex gap-1 items-center">
                                                         <svg className="w-12 h-12" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,6 +128,8 @@ export default function Laporan() {
                                                         </div>
                                                 </div>
                                         </div>
+                                
+                                        {/* body card */}
                                         <div className="card-body mt-3">
                                                 <div className="flex gap-3 flex-col lg:flex-row">
                                                         <div className="w-full h-50 lg:h-auto">
@@ -154,17 +162,17 @@ export default function Laporan() {
                                                         
                                                 </div>
                                         </div>
+
+                                        {/* footer card */}
                                         <div className="card-footer mt-3">
-                                                <div className="flex justify-end sm:hidden relative">
-                                                        <Button
-                                                                onClick={() => setVisibleDropdownBuatan(!visibleDropdownBuatan)}
-                                                                className="h-9 outline-none border-none shadow-none
-                                                                                bg-transparent text-black px-1 hover:bg-transparent"
+                                                <div className="group flex justify-end sm:hidden relative">
+                                                        <Button className="h-9 outline-none border-none shadow-none
+                                                                                        bg-transparent text-black px-1 hover:bg-transparent"
                                                         >
                                                                 <i className="fas fa-ellipsis-vertical"></i>
                                                         </Button>
 
-                                                        <div className={`dropdown-buatan ${visibleDropdownBuatan ? "flex" : "hidden"} flex-col gap-2 absolute rounded-md bottom-[100%] bg-white p-3 mt-1 shadow-md/30`}>
+                                                        <div className={`dropdown-buatan hidden group-hover:!flex flex-col gap-2 absolute rounded-md bottom-[100%] bg-white p-3 mt-1 shadow-md/30`}>
                                                                 <div>
                                                                         <button className="text-[.7rem] py-[8px] shadow-md/30 bg-[#4175D7] text-white rounded-xl px-3 flex items-center gap-1 boder border-[#2B60C1] outline-none">
                                                                                 <svg className="w-3 h-3" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -195,7 +203,10 @@ export default function Laporan() {
                                                 </div>
                                         </div>
                                 </div>
+
                                 <div className="card p-4 shadow-md/30 rounded-md">
+
+                                        {/* header card */}
                                         <div className="card-header">
                                                 <div className="flex gap-1 items-center">
                                                         <svg className="w-12 h-12" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -208,6 +219,8 @@ export default function Laporan() {
                                                         </div>
                                                 </div>
                                         </div>
+                                
+                                        {/* body card */}
                                         <div className="card-body mt-3">
                                                 <div className="flex gap-3 flex-col lg:flex-row">
                                                         <div className="w-full h-50 lg:h-auto">
@@ -240,17 +253,17 @@ export default function Laporan() {
                                                         
                                                 </div>
                                         </div>
+
+                                        {/* footer card */}
                                         <div className="card-footer mt-3">
-                                                <div className="flex justify-end sm:hidden relative">
-                                                        <Button
-                                                                onClick={() => setVisibleDropdownBuatan(!visibleDropdownBuatan)}
-                                                                className="h-9 outline-none border-none shadow-none
-                                                                                bg-transparent text-black px-1 hover:bg-transparent"
+                                                <div className="group flex justify-end sm:hidden relative">
+                                                        <Button className="h-9 outline-none border-none shadow-none
+                                                                                        bg-transparent text-black px-1 hover:bg-transparent"
                                                         >
                                                                 <i className="fas fa-ellipsis-vertical"></i>
                                                         </Button>
 
-                                                        <div className={`dropdown-buatan ${visibleDropdownBuatan ? "flex" : "hidden"} flex-col gap-2 absolute rounded-md bottom-[100%] bg-white p-3 mt-1 shadow-md/30`}>
+                                                        <div className={`dropdown-buatan hidden group-hover:!flex flex-col gap-2 absolute rounded-md bottom-[100%] bg-white p-3 mt-1 shadow-md/30`}>
                                                                 <div>
                                                                         <button className="text-[.7rem] py-[8px] shadow-md/30 bg-[#4175D7] text-white rounded-xl px-3 flex items-center gap-1 boder border-[#2B60C1] outline-none">
                                                                                 <svg className="w-3 h-3" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">

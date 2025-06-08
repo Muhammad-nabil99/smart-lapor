@@ -9,13 +9,13 @@ export default function LayoutUser() {
         const [isOpen, setIsOpen] = useState(localStorage.getItem('openSidebarUser') ? 'true' : 'false');
 
         return (
-                <div className="flex gap-2 flex-nowrap">
+                <div className="flex flex-nowrap">
                         
                         {/* konten sebelah kiri */}
                         <SidebarUser isOpen={isOpen}/>
 
                         {/* kontent sebelah kanan */}
-                        <main className="w-full overflow-x-hidden">
+                        <main className="w-full overflow-x-hidden dark:bg-gray-900">
 
                                 {/* navigasi user nya */}
                                 <NavbarUser setIsOpen={setIsOpen}/>
