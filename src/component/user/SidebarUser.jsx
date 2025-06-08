@@ -7,13 +7,12 @@ import {
         SidebarItems,
 } from "flowbite-react";
 
-export default function SidebarUser() {
-        
+export default function SidebarUser({ isOpen }) {
         return (
                 <Sidebar
                         id="sidebar-user"
                         aria-label="Default sidebar example"
-                        className="h-[100vh] w-[100px] border border-gray-100 sticky top-0"
+                        className={`h-[100vh] w-25 ${isOpen ? "ms-0" : "-ms-25"} border border-gray-100 sticky top-0 transition-all duration-100`}
                 >
                         <SidebarItems>
                                 <SidebarItemGroup>

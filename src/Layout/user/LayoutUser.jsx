@@ -1,19 +1,23 @@
 import { Outlet } from "react-router-dom";
 import SidebarUser from "../../component/user/SidebarUser";
 import NavbarUser from "../../component/user/NavbarUser";
+import { useState } from "react";
 
 export default function LayoutUser() {
+
+        const [isOpen, setIsOpen] = useState(false);
+        
         return (
                 <div className="flex gap-2 flex-nowrap">
                         
                         {/* konten sebelah kiri */}
-                        <SidebarUser/>
+                        <SidebarUser isOpen={isOpen}/>
 
                         {/* kontent sebelah kanan */}
-                        <main className="w-full">
+                        <main className="w-full overflow-x-hidden">
 
                                 {/* navigasi user nya */}
-                                <NavbarUser/>
+                                <NavbarUser setIsOpen={setIsOpen} isOpen={isOpen}/>
 
                                 {/* isi utama nya */}
                                 <Outlet />
