@@ -1,7 +1,36 @@
 import { Button, FileInput, HelperText, Label, Textarea, TextInput } from "flowbite-react";
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
 
 
 export default function BuatLaporanUser() {
+
+        const [gambarPreview, setGambarPreview] = useState(null);
+        const [gambarName, setGambarName] = useState(null);
+        const [gambarSize, setGambarSize] = useState(null);
+
+        const saatFileDijatuhkan = useCallback((fileYangDiterima) => {
+
+                fileYangDiterima.forEach(file => {
+                        const pembaca = new FileReader();
+                        pembaca.onload = () => {
+                                setGambarPreview(pembaca.result);
+                                setGambarName(file.name) 
+                                setGambarSize((file.size/1024**2).toFixed(2)) // dalam ukuran mb
+                        }
+                        pembaca.readAsDataURL(file);
+                });
+
+        }, []);
+
+        const { getRootProps, getInputProps, isDragActive } = useDropzone({
+                onDrop: saatFileDijatuhkan,
+                accept: {
+                        'image/*' : [] // hanya menerima gambar
+                },
+                multiple: false // hanya satu gambar atau file
+        }); 
+
         return (
                 <section id="buatLaporanUser" className="p-4">
                         
@@ -55,40 +84,55 @@ export default function BuatLaporanUser() {
                                 </div>
 
                                 <div>
-                                        <Label
+                                        <div
+                                                {...getRootProps()}
                                                 htmlFor="dropzone-file"
-                                                className="flex p-4 text-center h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg 
-                                                        border-2 border-[#41FF6A] bg-[#F1FFF6] hover:bg-[#41ff6a96] "
+                                                className={`${gambarSize  ? "h-auto" : "h-64"} flex p-4 text-center w-full cursor-pointer flex-col items-center justify-center rounded-lg 
+                                                        border-2 border-[#41FF6A]  ${isDragActive ? "bg-[#41ff6a2c]" : "bg-[#F1FFF6]" } hover:bg-[#41ff6a2c] `}
                                         >
-                                                <div className="flex flex-col items-center justify-center pb-6 pt-5">
-                                                        <svg
-                                                        className="mb-4 h-10 w-10 text-gray-500 dark:text-gray-400"
-                                                        aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 20 16"
-                                                        >
-                                                        <path
-                                                        stroke="currentColor"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth="2"
-                                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 
-                                                                0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 
-                                                                0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                                                        />
-                                                        </svg>
-                                                        <p className="mb-2 text-sm text-gray-500">
-                                                                <span className="font-semibold">Klik untuk upload</span> atau seret foto ke sini
-                                                        </p>
-                                                        <p className="text-xs text-gray-500 font-light">
-                                                                Hanya file SVG, PNG, JPG atau GIF (MAX. 800×400px)
-                                                        </p>
-                                                </div>
+                                                <input {...getInputProps()} />
+                                                        <div className="flex flex-col items-center justify-center pb-6 pt-5">
+                                                                <svg
+                                                                className="mb-4 h-10 w-10 text-gray-500 dark:text-gray-400"
+                                                                aria-hidden="true"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none"
+                                                                viewBox="0 0 20 16"
+                                                                >
+                                                                <path
+                                                                stroke="currentColor"
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                strokeWidth="2"
+                                                                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 
+                                                                        0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 
+                                                                        0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                                                                />
+                                                                </svg>
+                                                                <p className="mb-2 text-sm text-gray-500">
+                                                                        <span className="font-semibold">Klik untuk upload</span> atau seret foto ke sini
+                                                                        <br />
+                                                                        <span className="text-[11px]">ukuran gambar tidak lebih dari 2 mb</span>
+                                                                </p>
+                                                        </div>
+                                                {
+                                                        gambarName && gambarSize && gambarPreview && (
+                                                                <div className="w-full">
+                                                                        <div className="flex justify-left items-center mb-2">
+                                                                                <span className="relative h-2 rounded-full w-full border border-sky-200">
+                                                                                        <span style={{ width: `${gambarSize/2*100}%` }} className={`absolute h-full left-0 bg-sky-300`}></span>
+                                                                                        <span className="absolute -top-1 left-[102%] h-full text-[11px] text-sky-300">
+                                                                                                {gambarSize/2*100}%
+                                                                                        </span>
+                                                                                </span>
+                                                                                <span className="text-xs w-full text-orange-400">{ gambarSize } mb</span>
+                                                                        </div>
+                                                                        <img src={gambarPreview} alt="gambar terpilih" className="w-full h-50 object-cover" loading="lazy"/>
+                                                                </div>
+                                                        )
+                                                }
                                                 
-                                                {/* Komponen FileInput ini yang menangani upload dan drag-and-drop */}
-                                                <FileInput id="dropzone-file" className="hidden" />
-                                        </Label>
+                                        </div>
                                 </div>
                         </div>
 
