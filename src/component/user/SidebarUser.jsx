@@ -82,7 +82,7 @@ export default function SidebarUser({ darkThemeUser }) {
                                                         </button>
                                                 </div>
 
-                                                <div  className="flex items-center gap-2">
+                                                <div className="flex items-center gap-2">
                                                         <NavLink
                                                                 to="/user/buat-laporan"
                                                                 className={({
