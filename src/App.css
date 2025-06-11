@@ -42,8 +42,9 @@ html.dark #sidebar-user div.h-full.overflow-y-auto.overflow-x-hidden {
 
 #sidebar-user div[data-testid="flowbite-sidebar-items"] li a:hover {
         background-color: transparent;
+        padding-inline: 0;
 }
-
+/* 
 #sidebar-user div[data-testid="flowbite-sidebar-items"] li button:hover{
         background-color: #64C983;
         transition: .2s ease-in-out;
@@ -51,4 +52,4 @@ html.dark #sidebar-user div.h-full.overflow-y-auto.overflow-x-hidden {
 
 #sidebar-user div[data-testid="flowbite-sidebar-items"] li button:hover svg path {
         fill: white;
-}
+} */
