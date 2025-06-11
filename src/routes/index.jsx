@@ -7,23 +7,21 @@ import UserRoutes from "./user";
 import InstansiRoutes from "./user";
 
 const AppRoutes = () => {
-        return (
-                <Routes>
+  return (
+    <Routes>
+      {/* halaman pembuka */}
+      <Route path="/" element={<LandingPage />}></Route>
 
-                        {/* halaman pembuka */}
-                        <Route path="/" element={<LandingPage />}></Route>
+      {/* semua url/path yang diawali instansi */}
+      <Route path="instansi/*" element={<InstansiRoutes />} />
 
-                        {/* semua url/path yang diawali instansi */}
-                        <Route path="instansi/*" element={<InstansiRoutes />} />
+      {/* semua url/path yang diawali user */}
+      <Route path="user/*" element={<UserRoutes />} />
 
-                        {/* semua url/path yang diawali user */}
-                        <Route path="user/*" element={<UserRoutes />} />
-
-                        {/* path jika halaman yang dituju tidak ditemukan */}
-                        <Route path="*" element={<Tersesat />}></Route>
-
-                </Routes>
-        )
-}
+      {/* path jika halaman yang dituju tidak ditemukan */}
+      <Route path="*" element={<Tersesat />}></Route>
+    </Routes>
+  );
+};
 
 export default AppRoutes;

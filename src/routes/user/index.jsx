@@ -13,28 +13,26 @@ import ProfilUser from "../../pages/user/ProfilUser";
 import PengaturanUser from "../../pages/user/PengaturanUser";
 
 const UserRoutes = () => {
-        return (
-                <Routes>
+  return (
+    <Routes>
+      {/* auth nya dipisahkan */}
+      <Route path="/daftar" element={<DaftarUser />} />
+      <Route path="/login" element={<LoginUser />} />
 
-                        {/* auth nya dipisahkan */}
-                        <Route path="/daftar" element={<DaftarUser />} />
-                        <Route path="/login" element={<LoginUser />} />
-                        
-                        <Route element={<LayoutUser />}>
-                                <Route path="/beranda" element={<BerandaUser />} />
-                                <Route path="/buat-laporan" element={<BuatLaporanUser />} />
-                                <Route path="/laporan" element={<Laporan />} />
-                                <Route path="/profil" element={<ProfilUser />}></Route>
-                                <Route path="/riwayat" element={<RiwayatUser />} />
-                                <Route path="/edit" element={<EditProfil />} />
-                                <Route path="/pengaturan" element={<PengaturanUser />} />
+      <Route element={<LayoutUser />}>
+        <Route path="/beranda" element={<BerandaUser />} />
+        <Route path="/buat-laporan" element={<BuatLaporanUser />} />
+        <Route path="/laporan" element={<Laporan />} />
+        <Route path="/profil" element={<ProfilUser />}></Route>
+        <Route path="/riwayat" element={<RiwayatUser />} />
+        <Route path="/edit" element={<EditProfil />} />
+        <Route path="/pengaturan" element={<PengaturanUser />} />
+      </Route>
 
-                        </Route>
-
-                        {/* path jika halaman yang dituju tidak ditemukan */}
-                        <Route path="*" element={<TersesatUser />}></Route>
-                </Routes>
-        )
-}
+      {/* path jika halaman yang dituju tidak ditemukan */}
+      <Route path="*" element={<TersesatUser />}></Route>
+    </Routes>
+  );
+};
 
 export default UserRoutes;
