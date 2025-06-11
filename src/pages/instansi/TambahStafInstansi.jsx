@@ -230,7 +230,11 @@ export default function TambahStafInstansi() {
                                                                 </span>
                                                         ) : (
                                                                 <span className="text-green-500">
-                                                                        *Memenuhi standar ({sizeFoto}mb)
+                                                                        {namaFoto && (
+                                                                                <>
+                                                                                        *Memenuhi standar ({sizeFoto}mb)
+                                                                                </>
+                                                                        )}
                                                                 </span>
                                                         )
                                                 }
