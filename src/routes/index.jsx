@@ -3,8 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "../pages/landing/LandingPage";
 import Tersesat from "../pages/404/Tersesat";
 
-import UserRoutes from "./instansi";
-import InstansiRoutes from "./user";
+import UserRoutes from "./user";
+import InstansiRoutes from "./instansi";
 
 const AppRoutes = () => {
         return (
