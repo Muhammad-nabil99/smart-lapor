@@ -4,7 +4,8 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
-        --breakpoint-xs: '320px';
+        --breakpoint-xxs: 320px;
+        --breakpoint-xs: 420px;
         --color-green-450: #CEFFDC;
         --color-pending: #FFCC00;
         --color-dot-pending: #FFBB00;

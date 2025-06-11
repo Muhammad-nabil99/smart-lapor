@@ -100,7 +100,7 @@ export default function SidebarUser({ darkThemeUser }) {
                                                                 </svg>
                                                         </NavLink>
                                                         <button
-                                                                className={`line-clamp-1 flex justify-start dark:text-white ${
+                                                                className={`line-clamp-1 text-start flex justify-start dark:text-white ${
                                                                         isOpen
                                                                                 ? "w-25"
                                                                                 : "w-0"

@@ -1,5 +1,5 @@
 import { Navbar, NavbarBrand } from "flowbite-react";
-import { AiOutlineHome } from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
 import { MdDarkMode } from "react-icons/md";
 import { useEffect } from "react";
@@ -52,6 +52,15 @@ export default function NavbarInstansi({ darkThemeInstansi, setDarkThemeInstansi
                                 </NavbarBrand>
                         </div>
                         <div className="flex items-center gap-2">
+								<div className="text-sm">
+									<span className="
+                                                dark:bg-gray-600 bg-gray-100
+                                                cursor-pointer h-9 w-9 flex text-black
+                                                items-center justify-center rounded-[50%]
+                                	">
+										<FaUserAlt className="dark:text-white"/>
+									</span>
+								</div>	
                                 <span
                                         onClick={() =>
                                                 setDarkThemeInstansi(!darkThemeInstansi)
