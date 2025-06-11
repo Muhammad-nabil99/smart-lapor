@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import LandingPage from "../pages/landing/LandingPage";
-import Tersesat from "../pages/404/Tersesat";
+import HalamanTidakDitemukan from "../pages/404/HalamanTidakDitemukan";
 
 import UserRoutes from "./user";
 import InstansiRoutes from "./user";
@@ -20,7 +20,7 @@ const AppRoutes = () => {
                         <Route path="user/*" element={<UserRoutes />} />
 
                         {/* path jika halaman yang dituju tidak ditemukan */}
-                        <Route path="*" element={<Tersesat />}></Route>
+                        <Route path="*" element={<HalamanTidakDitemukan />}></Route>
 
                 </Routes>
         )

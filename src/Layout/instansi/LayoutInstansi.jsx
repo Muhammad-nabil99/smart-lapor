@@ -1,4 +1,4 @@
-
+import { Outlet } from "react-router-dom"
 
 export default function LayoutInstansi() {
         return (
@@ -11,7 +11,6 @@ export default function LayoutInstansi() {
                                 {/* ... */}
 
                                 {/* isi utama nya */}
-                                <Outlet />
                         </main>
                 </div>
         )

@@ -112,7 +112,7 @@ export default function Laporan() {
                                 </div>
 
 
-                                {/* jangan perdulikan 2 card duplikasi di bawah.. nanti bakalan di hapus kalau udah ada data backend untuk looping */}
+                                {/* jangan      perdulikan 2 card duplikasi di bawah.. nanti bakalan di hapus kalau udah ada data backend untuk looping */}
                                 <div className="card p-4 shadow-md/30 rounded-md">
 
                                         {/* header card */}
