@@ -1,7 +1,7 @@
 
 export default function CardBerandaInstansi({cardText, cardColor, cardImage, countNumber}) {
         return (
-                <div className={`bg-[${cardColor}] p-5 flex items-center flex-col gap-2 justify-center rounded-md`}>
+                <div style={{ background: cardColor }} className="p-5 flex items-center flex-col gap-2 justify-center rounded-md">
                         <div className="card-icon h-17 w-17">
                                 <img src={cardImage} alt="" className="w-auto h-auto object-cover rounded-md"/>
                         </div>

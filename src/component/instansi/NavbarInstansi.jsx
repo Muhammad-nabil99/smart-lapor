@@ -4,15 +4,18 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { MdDarkMode } from "react-icons/md";
 import { useEffect } from "react";
 
-export default function NavbarInstansi({ darkThemeInstansi, setDarkThemeInstansi }) {
+export default function NavbarInstansi({
+        darkThemeInstansi,
+        setDarkThemeInstansi,
+}) {
         useEffect(() => {
                 darkThemeInstansi
                         ? document
-								.querySelector("html")
-								.classList.replace("light", "dark")
+                                  .querySelector("html")
+                                  .classList.replace("light", "dark")
                         : document
-									.querySelector("html")
-									.classList.replace("dark", "light");
+                                  .querySelector("html")
+                                  .classList.replace("dark", "light");
         }, [darkThemeInstansi]);
 
         return (
@@ -51,19 +54,22 @@ export default function NavbarInstansi({ darkThemeInstansi, setDarkThemeInstansi
                                         </svg>
                                 </NavbarBrand>
                         </div>
-                        <div className="flex items-center gap-2">
-								<div className="text-sm">
-									<span className="
-                                                dark:bg-gray-600 bg-gray-100
-                                                cursor-pointer h-9 w-9 flex text-black
-                                                items-center justify-center rounded-[50%]
-                                	">
-										<FaUserAlt className="dark:text-white"/>
-									</span>
-								</div>	
+                        <div className="flex text-sm items-center gap-2">
+                                <p className="line-clamp-1">John Doe</p>
+                                <span
+                                        className="
+                                        dark:bg-gray-600 bg-gray-100
+                                        cursor-pointer h-9 w-9 flex text-black
+                                        items-center justify-center rounded-[50%]
+                                "
+                                >
+                                        <FaUserAlt className="dark:text-white" />
+                                </span>
                                 <span
                                         onClick={() =>
-                                                setDarkThemeInstansi(!darkThemeInstansi)
+                                                setDarkThemeInstansi(
+                                                        !darkThemeInstansi
+                                                )
                                         }
                                         className="
                                                 dark:bg-sky-300 bg-amber-100
