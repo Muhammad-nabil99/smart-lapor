@@ -1,18 +1,23 @@
 import { Routes, Route } from "react-router-dom";
 
-import TersesatInstansi from "../../pages/404/TersesatInstansi";
+import HalamanTidakDitemukanInstansi from "../../pages/404/HalamanTidakDitemukanInstansi";
+import LayoutInstansi from "../../Layout/instansi/LayoutInstansi";
+import BerandaInstansi from "../../pages/instansi/BerandaInstansi";
 
 const InstansiRoutes = () => {
         return (
                 <Routes>
                         <Route element={<LayoutInstansi />}>
-                                {/* ... */}
-
-                                {/* path jika halaman yang dituju tidak ditemukan */}
-                                <Route path="*" element={<TersesatInstansi />}></Route>
+                                <Route path="/beranda" element={<BerandaInstansi />} />
                         </Route>
+
+                        {/* path jika halaman yang dituju tidak ditemukan */}
+                        <Route
+                                path="*"
+                                element={<HalamanTidakDitemukanInstansi />}
+                        ></Route>
                 </Routes>
-        )
-}
+        );
+};
 
 export default InstansiRoutes;

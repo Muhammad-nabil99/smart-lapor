@@ -6,20 +6,16 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function SidebarUser({ darkThemeUser }) {
-        const [isOpen, setIsOpen] = useState(
-                localStorage.getItem("openSidebarUser") ? "true" : "false"
-        );
+        const [isOpen, setIsOpen] = useState(false);
         const handleOpenSidebarUser = () => {
-                const open = localStorage.getItem("openSidebarUser") === "true";
-                setIsOpen(!open);
-                localStorage.setItem("openSidebarUser", !open);
+                setIsOpen(!isOpen);
         };
         return (
                 <Sidebar
                         id="sidebar-user"
                         aria-label="Default sidebar example"
                         className={`h-[100vh] ${
-                                isOpen ? "w-18" : "w-50"
+                                isOpen ? "w-50" : "w-18"
                         } border border-gray-100 dark:border-gray-700 sticky top-0 transition-all duration-100`}
                 >
                         <SidebarItems>
@@ -74,8 +70,8 @@ export default function SidebarUser({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Beranda
@@ -106,8 +102,8 @@ export default function SidebarUser({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Buat <br />{" "}
@@ -139,8 +135,8 @@ export default function SidebarUser({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Laporan
@@ -171,8 +167,8 @@ export default function SidebarUser({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Riwayat
@@ -203,8 +199,8 @@ export default function SidebarUser({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Profil
@@ -236,8 +232,8 @@ export default function SidebarUser({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Pengaturan

@@ -1,18 +1,19 @@
 import { Navbar, NavbarBrand } from "flowbite-react";
+import { AiOutlineHome } from "react-icons/ai";
 import { IoSunnyOutline } from "react-icons/io5";
 import { MdDarkMode } from "react-icons/md";
 import { useEffect } from "react";
 
-export default function NavbarInstansi({ darkThemeUser, setDarkThemeUser }) {
+export default function NavbarInstansi({ darkThemeInstansi, setDarkThemeInstansi }) {
         useEffect(() => {
-                darkThemeUser
+                darkThemeInstansi
                         ? document
 								.querySelector("html")
 								.classList.replace("light", "dark")
                         : document
 									.querySelector("html")
 									.classList.replace("dark", "light");
-        }, [darkThemeUser]);
+        }, [darkThemeInstansi]);
 
         return (
                 <Navbar
@@ -53,7 +54,7 @@ export default function NavbarInstansi({ darkThemeUser, setDarkThemeUser }) {
                         <div className="flex items-center gap-2">
                                 <span
                                         onClick={() =>
-                                                setDarkThemeUser(!darkThemeUser)
+                                                setDarkThemeInstansi(!darkThemeInstansi)
                                         }
                                         className="
                                                 dark:bg-sky-300 bg-amber-100
@@ -61,7 +62,7 @@ export default function NavbarInstansi({ darkThemeUser, setDarkThemeUser }) {
                                                 items-center justify-center rounded-[50%]
                                 "
                                 >
-                                        {darkThemeUser ? (
+                                        {darkThemeInstansi ? (
                                                 <MdDarkMode />
                                         ) : (
                                                 <IoSunnyOutline />

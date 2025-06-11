@@ -1,25 +1,19 @@
 "use client";
-
 import { Sidebar, SidebarItemGroup, SidebarItems } from "flowbite-react";
 import { useState } from "react";
-
 import { NavLink } from "react-router-dom";
 
-export default function SidebarInstansi({ darkThemeUser }) {
-        const [isOpen, setIsOpen] = useState(
-                localStorage.getItem("openSidebarUser") ? "true" : "false"
-        );
+export default function SidebarIntansi({ darkThemeInstansi }) {
+        const [isOpen, setIsOpen] = useState(false);
         const handleOpenSidebarUser = () => {
-                const open = localStorage.getItem("openSidebarUser") === "true";
-                setIsOpen(!open);
-                localStorage.setItem("openSidebarUser", !open);
+                setIsOpen(!isOpen);
         };
         return (
                 <Sidebar
                         id="sidebar-user"
                         aria-label="Default sidebar example"
                         className={`h-[100vh] ${
-                                isOpen ? "w-18" : "w-50"
+                                isOpen ? "w-50" : "w-18"
                         } border border-gray-100 dark:border-gray-700 sticky top-0 transition-all duration-100`}
                 >
                         <SidebarItems>
@@ -40,7 +34,7 @@ export default function SidebarInstansi({ darkThemeUser }) {
                                                                 <path
                                                                         d="M8.54167 35.875C7.60208 35.875 6.79803 35.5407 6.1295 34.8722C5.46097 34.2037 5.12614 33.3991 5.125 32.4583V8.54167C5.125 7.60208 5.45983 6.79803 6.1295 6.1295C6.79917 5.46097 7.60322 5.12614 8.54167 5.125H32.4583C33.3979 5.125 34.2025 5.45983 34.8722 6.1295C35.5419 6.79917 35.8761 7.60322 35.875 8.54167V32.4583C35.875 33.3979 35.5407 34.2025 34.8722 34.8722C34.2037 35.5419 33.3991 35.8761 32.4583 35.875H8.54167ZM20.5 32.4583H32.4583V8.54167H20.5V32.4583Z"
                                                                         fill={`${
-                                                                                darkThemeUser
+                                                                                darkThemeInstansi
                                                                                         ? "white"
                                                                                         : "black"
                                                                         }`}
@@ -62,20 +56,22 @@ export default function SidebarInstansi({ darkThemeUser }) {
                                                                 }
                                                         >
                                                                 <svg
-                                                                        width="20"
-                                                                        height="20"
-                                                                        viewBox="0 0 32 32"
-                                                                        fill="currentColor"
+                                                                        className="w-5 h-5"
+                                                                        viewBox="0 0 40 39"
+                                                                        fill="none"
                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                 >
-                                                                        <path d="M15.875 7.33286L6.83333 14.5662V24.6915H13.2917V19.5249H18.4583V24.6915H24.9166V15.1875C24.9167 14.9938 24.8732 14.8025 24.7894 14.6279C24.7055 14.4533 24.5835 14.2997 24.4323 14.1787L15.875 7.33286ZM15.875 4.0249L26.0456 12.1624C26.4991 12.5252 26.8653 12.9853 27.117 13.5087C27.3688 14.0321 27.4996 14.6054 27.5 15.1862V24.6915C27.5 25.3767 27.2278 26.0338 26.7433 26.5182C26.2589 27.0027 25.6018 27.2749 24.9166 27.2749H6.83333C6.14819 27.2749 5.49111 27.0027 5.00664 26.5182C4.52217 26.0338 4.25 25.3767 4.25 24.6915V14.5662C4.25005 14.179 4.33713 13.7967 4.50482 13.4477C4.6725 13.0987 4.91649 12.7919 5.21875 12.5499L15.875 4.0249Z" />
+                                                                        <path
+                                                                                d="M20.0989 5.91793L5.12458 17.8974V34.6666H15.8205V26.1098H24.3773V34.6666H35.0733V18.9264C35.0734 18.6056 35.0014 18.2888 34.8625 17.9996C34.7237 17.7104 34.5215 17.4562 34.2711 17.2557L20.0989 5.91793ZM20.0989 0.439453L36.943 13.9164C37.6941 14.5172 38.3005 15.2792 38.7175 16.1461C39.1344 17.0129 39.3511 17.9623 39.3517 18.9242V34.6666C39.3517 35.8013 38.9009 36.8895 38.0986 37.6918C37.2962 38.4942 36.208 38.9449 35.0733 38.9449H5.12458C3.98988 38.9449 2.90166 38.4942 2.0993 37.6918C1.29695 36.8895 0.846191 35.8013 0.846191 34.6666V17.8974C0.846271 17.2562 0.990499 16.6231 1.26821 16.0451C1.54592 15.4671 1.95 14.9589 2.45059 14.5581L20.0989 0.439453Z"
+                                                                                fill="white"
+                                                                        />
                                                                 </svg>
                                                         </NavLink>
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Beranda
@@ -106,8 +102,8 @@ export default function SidebarInstansi({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Buat <br />{" "}
@@ -139,8 +135,8 @@ export default function SidebarInstansi({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Laporan
@@ -171,8 +167,8 @@ export default function SidebarInstansi({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Riwayat
@@ -203,8 +199,8 @@ export default function SidebarInstansi({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Profil
@@ -236,8 +232,8 @@ export default function SidebarInstansi({ darkThemeUser }) {
                                                         <button
                                                                 className={`line-clamp-1 flex justify-start dark:text-white ${
                                                                         isOpen
-                                                                                ? "w-0"
-                                                                                : "w-25"
+                                                                                ? "w-25"
+                                                                                : "w-0"
                                                                 }`}
                                                         >
                                                                 Pengaturan

@@ -1,19 +1,22 @@
+import { useState } from "react";
+import NavbarInstansi from "../../component/instansi/NavbarInstansi";
 import SidebarInstansi from "../../component/instansi/SidebarInstansi";
+import { Outlet } from "react-router-dom";
 
 export default function LayoutInstansi() {
-        const [darkThemeUser, setDarkThemeUser] = useState(false);
+        const [darkThemeInstansi, setDarkThemeInstansi] = useState(false);
 
         return (
-                <div>
+                <div className="flex flex-nowrap">
                         {/* ... */}
-                        <SidebarInstansi darkThemeUser={darkThemeUser}/>
+                        <SidebarInstansi darkThemeInstansi={darkThemeInstansi}/>
 
-                        <main className="w-full">
+                        <main className="w-full overflow-x-hidden dark:bg-gray-900">
                                 {/* ... */}
-                                
+                                <NavbarInstansi darkThemeInstansi={darkThemeInstansi} setDarkThemeInstansi={setDarkThemeInstansi}/>
 
                                 {/* isi utama nya */}
-                                <Outlet />
+                                <Outlet  />
                         </main>
                 </div>
         );
