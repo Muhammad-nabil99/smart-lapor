@@ -79,7 +79,7 @@ export default function SidebarIntansi({ darkThemeInstansi }) {
 
                                                 <div className="flex items-center gap-2">
                                                         <NavLink
-                                                                to="/instansi/tambah-staf"
+                                                                to="/instansi/daftar-staf"
                                                                 className={({
                                                                         isActive,
                                                                 }) =>
@@ -104,7 +104,7 @@ export default function SidebarIntansi({ darkThemeInstansi }) {
                                                                                 : "w-0"
                                                                 }`}
                                                         >
-                                                                Tambah <br />{" "}
+                                                                Daftar <br />{" "}
                                                                 Staf
                                                         </button>
                                                 </div>
