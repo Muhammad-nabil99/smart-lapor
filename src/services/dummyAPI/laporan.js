@@ -18,7 +18,7 @@ export const laporanOrangLainAPI = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia suscipit nihil delectus enim soluta a animi vel rerum, praesentium voluptate!",
     location: "Jl. Wolasi abc",
-  },
+  },  
   {
     id: 2,
     created_at: "01/03/2025",

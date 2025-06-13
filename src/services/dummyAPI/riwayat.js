@@ -1,0 +1,51 @@
+export const dataRiwayat = [
+        {
+                id: 1,
+                nomor_laporan: "290405-001",
+                nama: "Joni",
+                waktu: "13:00 WITA 29/04/2025",
+                laporan: "Pembuatan KTP",
+                petugas: "Dr. H. Ali Mazi, SH",
+        },
+        {
+                id: 2,
+                nomor_laporan: "290405-002",
+                nama: "Joni",
+                waktu: "13:00 WITA 29/04/2025",
+                laporan: "Pembuatan KTP",
+                petugas: "Dr. Hj. Asnawi A. Paeda, M.Si",
+        },
+        {
+                id: 3,
+                nomor_laporan: "290405-003",
+                nama: "Joni",
+                waktu: "13:00 WITA 29/04/2025",
+                laporan: "Pembuatan KTP",
+                petugas: "Dr. H. Syaifullah, M.Si",
+        },
+        {
+                id: 4,
+                nomor_laporan: "290405-004",
+                nama: "Joni",
+                waktu: "13:00 WITA 29/04/2025",
+                laporan: "Pembuatan KTP",
+                petugas: "Ir. Belli, M.Si",
+        },
+        {
+                id: 5,
+                nomor_laporan: "290405-005",
+                nama: "Joni",
+                waktu: "13:00 WITA 29/04/2025",
+                laporan: "Pembuatan KTP",
+                petugas: "Dr. Sukarni, S.Pd., M.Si",
+        },
+        {
+                id: 6,
+                nomor_laporan: "290405-006",
+                nama: "Joni",
+                waktu: "13:00 WITA 29/04/2025",
+                laporan: "Pembuatan KTP",
+                petugas: "Dr. Zainal Abidin, M.Kes",
+        },
+
+] 

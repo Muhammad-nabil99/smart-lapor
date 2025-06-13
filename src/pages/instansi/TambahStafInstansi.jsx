@@ -5,7 +5,6 @@ import { useDropzone } from "react-dropzone";
 import Swal from "sweetalert2";
 
 export default function TambahStafInstansi() {
-
     // variabel yang berkaitan dengan pilih hari penugasan -----------------------------------------------
     const [munculkanDropdown, setMunculkanDropdown] = useState(false);
     const [hariDipilih, setHariDipilih] = useState("Pilih");
@@ -54,49 +53,71 @@ export default function TambahStafInstansi() {
 
     const handleSubmitForm = (e) => {
 
+        // mencegah halaman reload ;)
+        e.preventDefault();
+
         // jika hari penugasan belum dipilih
         if (hariDipilih.toLowerCase() === "pilih") {
-            e.preventDefault();
             Swal.fire({
-                title: "Formulir gagal terkirim!",
+                title: "Formulir gagal!",
                 text: "Pilih hari penugasan staf terlebih dahulu",
-                icon: "error"
+                icon: "error",
             });
             return;
         }
 
         // jika gambar belum diinput
         if (!namaFoto) {
-            e.preventDefault();
             Swal.fire({
-                title: "Formulir gagal terkirim!",
+                title: "Formulir gagal!",
                 text: "Unggah file atau gambar ke dalam formulir terlebih dahulu",
-                icon: "error"
+                icon: "error",
             });
             return;
         }
 
         // jika ukuran foto melebihi 2mb
         if (sizeFoto > 2) {
-            e.preventDefault();
             Swal.fire({
-                title: "Formulir gagal terkirim!",
+                title: "Formulir gagal!",
                 text: "Ukuran file/gambar yang diunggah terlalu besar",
-                icon: "error"
+                icon: "error",
             });
             return;
         }
 
-    }
+        Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            },
+            didClose: () => {
+                window.location.reload();
+            }
+        }).fire({
+            icon: "success",
+            title: "Staf berhasil ditambahkan",
+        });
+    };
 
     return (
-        <form method="post" onSubmit={(e) => handleSubmitForm(e)} className="p-4 dark:text-white">
+        <form
+            method="get" // nanti di ganti post
+            onSubmit={(e) => handleSubmitForm(e)}
+            className="p-4 dark:text-white"
+        >
             {/* header dan tombol submit */}
             <div className="flex items-center justify-between">
                 <span className="font-bold text-lg sm:text-xl">
                     Tambah Staf
                 </span>
                 <button className={buttonStyle} type="submit">
+                    <i className="fas fa-plus"></i> {" "}
                     Tambah
                 </button>
             </div>
@@ -310,7 +331,7 @@ export default function TambahStafInstansi() {
 }
 
 const buttonStyle = `
-        px-3 py-2 bg-black text-white dark:bg-white dark:text-black
+        px-3 py-2 bg-black text-white dark:bg-gray-300 dark:text-black
         rounded-md sm:text-base xs:text-sm text-xs
 `;
 

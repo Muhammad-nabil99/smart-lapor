@@ -15,7 +15,7 @@ export default function DaftarStafInstansi() {
     return (
         <section className="p-4">
 
-            <span className="capitalize font-bold text-base sm:text-xl">daftar staf</span>
+            <span className="capitalize font-bold text-base sm:text-xl dark:text-white">daftar staf</span>
 
             {hariList.map((hari, index) => {
                 const stafHariIni = daftarStafAPI.filter(
