@@ -123,7 +123,7 @@ export default function TambahStafInstansi() {
             </div>
 
             {/* card untuk memasukkan data-data */}
-            <div className="mt-8 shadow-md/10 gap-10 rounded-md py-10 px-5 sm:px-10 grid grid-cols-1 sm:grid-cols-2 mx-0 sm:mx-5">
+            <div className="mt-8 shadow-md/10 gap-10 rounded-md py-8 px-5 sm:px-10 grid grid-cols-1 sm:grid-cols-2 mx-0 sm:mx-5">
                 {/* konten sebelah kiri (ukuran >sm) */}
                 <div>
                     {/* nama lengkap */}
