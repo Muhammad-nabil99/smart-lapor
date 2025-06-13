@@ -59,12 +59,46 @@ export default function DataAda() {
                     <div className="flex flex-wrap gap-2 items-center justify-between mt-2">
                         <div className="flex items-center gap-2">
                             <span
-                                className={`bg-${data.status} text-gray-600 font-bold rounded-full px-3 py-2 text-sm flex items-center gap-1`}
+                                className="font-bold rounded-full px-3 py-2 text-sm flex items-center gap-1"
+                                style={{
+                                    background:
+                                    data.status === "proses" ||
+                                    data.status === "pending"
+                                        ? "#FFE26F"
+                                        : data.status === "tolak"
+                                        ? "#FBA28E"
+                                        : data.status === "selesai"
+                                        ? "#9FFFC4"
+                                        : ""
+                                }}
                             >
-                                <i
-                                    className={`fas fa-circle text-dot-${data.status}`}
-                                ></i>
-                                Ditolak
+                                <svg
+                                    className="w-3 h-3"
+                                    viewBox="0 0 10 10"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <circle
+                                        cx="5"
+                                        cy="5"
+                                        r="5"
+                                        fill="none"
+                                        className={
+                                            data.status === "proses" ||
+                                            data.status === "pending"
+                                                ? "fill-dot-pending"
+                                                : data.status === "tolak"
+                                                ? "fill-dot-tolak"
+                                                : data.status === "selesai"
+                                                ? "fill-dot-selesai"
+                                                : ""
+                                        }
+                                    />
+                                </svg>
+
+                                <span className="text-gray-100">
+                                    Di{data.status}
+                                </span>
                             </span>
                             <button
                                 onClick={() => handleStatus()}

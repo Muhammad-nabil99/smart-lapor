@@ -7,11 +7,9 @@
         --breakpoint-xxs: 320px;
         --breakpoint-xs: 420px;
         --color-green-450: #CEFFDC;
-        --color-pending: #FFCC00;
+        --color-pending: #FFE26F;
         --color-dot-pending: #FFBB00;
-        --color-proses: #FFCC00;
-        --color-dot-proses: #FFBB00;
-        --color-tolak: #F7451D;
+        --color-tolak: #FBA28E;
         --color-dot-tolak: #FF5858;
         --color-selesai: #9FFFC4;
         --color-dot-selesai: #51FF94;
