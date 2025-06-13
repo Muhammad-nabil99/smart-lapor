@@ -1,4 +1,5 @@
-import { dataRiwayat } from "../../services/dummyAPI/riwayat";
+import { useNavigate } from "react-router-dom";
+import { dataRiwayatAPI } from "../../services/dummyAPI/riwayat";
 
 import {
     Button,
@@ -11,6 +12,7 @@ import {
 } from "flowbite-react";
 
 export default function TabelRiwayatInstansi() {
+    const navigate = useNavigate();
 
     return (
         <div className="overflow-x-auto mt-5 mb-2 py-3">
@@ -25,8 +27,11 @@ export default function TabelRiwayatInstansi() {
                     <TableHeadCell>Aksi</TableHeadCell>
                 </TableHead>
                 <TableBody>
-                    { dataRiwayat.map((data, index) => (
-                        <TableRow key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                    {dataRiwayatAPI.map((data, index) => (
+                        <TableRow
+                            key={index}
+                            className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                        >
                             <TableCell>{index + 1}</TableCell>
                             <TableCell>{data.nomor_laporan}</TableCell>
                             <TableCell>{data.nama}</TableCell>
@@ -34,7 +39,19 @@ export default function TabelRiwayatInstansi() {
                             <TableCell>{data.laporan}</TableCell>
                             <TableCell>{data.petugas}</TableCell>
                             <TableCell>
-                                <Button color="green">Detail</Button>
+                                <Button
+                                    color="green"
+                                    onClick={() =>
+                                        navigate(
+                                            `/instansi/riwayat/${data.id_riwayat}/detail`,
+                                            {
+                                                state: { dataDetail: data },
+                                            }
+                                        )
+                                    }
+                                >
+                                    Detail
+                                </Button>
                             </TableCell>
                         </TableRow>
                     ))}

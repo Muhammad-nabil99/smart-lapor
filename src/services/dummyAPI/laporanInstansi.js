@@ -1,6 +1,6 @@
-export const dataRiwayatAPI = [
+export const dataLaporanAPI = [
         {
-                id_riwayat: 1,
+                id_laporan: 1,
                 nomor_laporan: "290405-001",
                 nama: "Joni",
                 waktu: "13:00 WITA 29/04/2025",
@@ -14,7 +14,7 @@ export const dataRiwayatAPI = [
                 deskripsi: "Laporan ini ditujukan untuk menginformasikan adanya praktek pungutan liar yang sering terjadi di jalanan, wilayah kecamatan ABC.",
         },
         {
-                id_riwayat: 2,
+                id_laporan: 2,
                 nomor_laporan: "290405-001",
                 nama: "Joni",
                 waktu: "13:00 WITA 29/04/2025",
@@ -28,7 +28,7 @@ export const dataRiwayatAPI = [
                 deskripsi: "Laporan ini ditujukan untuk menginformasikan adanya praktek pungutan liar yang sering terjadi di jalanan, wilayah kecamatan ABC.",
         },
         {
-                id_riwayat: 3,
+                id_laporan: 3,
                 nomor_laporan: "290405-001",
                 nama: "Joni",
                 waktu: "13:00 WITA 29/04/2025",
@@ -42,7 +42,7 @@ export const dataRiwayatAPI = [
                 deskripsi: "Laporan ini ditujukan untuk menginformasikan adanya praktek pungutan liar yang sering terjadi di jalanan, wilayah kecamatan ABC.",
         },
         {
-                id_riwayat: 1,
+                id_laporan: 1,
                 nomor_laporan: "290405-001",
                 nama: "Joni",
                 waktu: "13:00 WITA 29/04/2025",
@@ -56,7 +56,7 @@ export const dataRiwayatAPI = [
                 deskripsi: "Laporan ini ditujukan untuk menginformasikan adanya praktek pungutan liar yang sering terjadi di jalanan, wilayah kecamatan ABC.",
         },
         {
-                id_riwayat: 4,
+                id_laporan: 4,
                 nomor_laporan: "290405-001",
                 nama: "Joni",
                 waktu: "13:00 WITA 29/04/2025",

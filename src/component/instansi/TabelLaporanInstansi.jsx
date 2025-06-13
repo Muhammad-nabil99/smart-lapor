@@ -1,4 +1,5 @@
-import { dataRiwayat } from "../../services/dummyAPI/riwayat";
+import { NavLink, useNavigate } from "react-router-dom";
+import { dataLaporanAPI } from "../../services/dummyAPI/laporanInstansi";
 
 import {
     Button,
@@ -11,6 +12,7 @@ import {
 } from "flowbite-react";
 
 export default function TabelLaporanInstansi() {
+    const navigate = useNavigate();
     return (
         <div className="overflow-x-auto mt-5 mb-2 py-3">
             <Table striped>
@@ -24,7 +26,7 @@ export default function TabelLaporanInstansi() {
                     <TableHeadCell>Aksi</TableHeadCell>
                 </TableHead>
                 <TableBody>
-                    {dataRiwayat.map((data, index) => (
+                    {dataLaporanAPI.map((data, index) => (
                         <TableRow
                             key={index}
                             className="bg-white dark:border-gray-700 dark:bg-gray-800"
@@ -36,7 +38,24 @@ export default function TabelLaporanInstansi() {
                             <TableCell>{data.laporan}</TableCell>
                             <TableCell>{data.petugas}</TableCell>
                             <TableCell>
-                                <Button color="green">Detail</Button>
+                                <Button
+                                    color="green"
+                                    onClick={() =>
+                                        navigate(
+                                            `/instansi/laporan/${data.id_laporan}/detail`,
+                                            {
+                                                state: {
+                                                    dataDetail: data,
+                                                },
+                                            }
+                                        )
+                                    }
+                                >
+                                    Detail
+                                </Button>
+                                <Button color="yellow" className="m-1">
+                                    Kerjakan
+                                </Button>
                             </TableCell>
                         </TableRow>
                     ))}
