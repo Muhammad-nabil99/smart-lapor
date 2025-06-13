@@ -2,6 +2,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { useCallback, useState } from "react";
 import { LiaCalendarDaySolid } from "react-icons/lia";
 import { useDropzone } from "react-dropzone";
+import Swal from "sweetalert2";
 
 export default function TambahStafInstansi() {
 
@@ -56,21 +57,33 @@ export default function TambahStafInstansi() {
         // jika hari penugasan belum dipilih
         if (hariDipilih.toLowerCase() === "pilih") {
             e.preventDefault();
-            alert("Silahkan pilih hari penugasan terlebih dahulu");
+            Swal.fire({
+                title: "Formulir gagal terkirim!",
+                text: "Pilih hari penugasan staf terlebih dahulu",
+                icon: "error"
+            });
             return;
         }
 
         // jika gambar belum diinput
         if (!namaFoto) {
             e.preventDefault();
-            alert("Silahkan input gambar terlebih dahulu");
+            Swal.fire({
+                title: "Formulir gagal terkirim!",
+                text: "Unggah file atau gambar ke dalam formulir terlebih dahulu",
+                icon: "error"
+            });
             return;
         }
 
         // jika ukuran foto melebihi 2mb
         if (sizeFoto > 2) {
             e.preventDefault();
-            alert("Size gambar yang dimasukkan terlalu besar");
+            Swal.fire({
+                title: "Formulir gagal terkirim!",
+                text: "Ukuran file/gambar yang diunggah terlalu besar",
+                icon: "error"
+            });
             return;
         }
 

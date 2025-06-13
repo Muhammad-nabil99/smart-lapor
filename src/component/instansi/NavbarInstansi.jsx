@@ -4,7 +4,7 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { MdDarkMode } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { RiMenu3Line } from "react-icons/ri";
-import DropdownNavbarInstansi from "./DropdownNavbarInstansi";
+import Swal from "sweetalert2";
 
 export default function NavbarInstansi({
     darkThemeInstansi,
@@ -16,8 +16,39 @@ export default function NavbarInstansi({
             : document.querySelector("html").classList.replace("dark", "light");
     }, [darkThemeInstansi]);
 
-    const [tampilMenu, setTampilMenu] = useState(false);
-
+    const handleAlertMenu = () => {
+        Swal.fire({
+            width: "98%",
+            footer: `
+                <div style="display: flex; align-items: center; gap: 8px; justify-content: right; color:black;">
+                    <span>John Doe</span>
+                    <i class="fa fa-user-circle"></i>
+                </div>
+            `,
+            html: `
+                <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px; margin-top:15px;">
+                    <button id="mode-terang" class="swal2-confirm swal2-styled" style="background-color: #dfedf9; color: #111;" onC>🌞 Mode Terang</button>
+                    <button id="mode-gelap" class="swal2-confirm swal2-styled" style="background-color: #111827;">🌙 Mode Gelap</button>
+                </div>
+            `,
+            showConfirmButton: false,
+            showCloseButton: true,
+            didOpen: () => {
+                document
+                    .getElementById("mode-terang")
+                    .addEventListener("click", () => {
+                        setDarkThemeInstansi(false);
+                        Swal.close();
+                    });
+                document
+                    .getElementById("mode-gelap")
+                    .addEventListener("click", () => {
+                        setDarkThemeInstansi(true);
+                        Swal.close();
+                    });
+            },
+        });
+    };
     return (
         <Navbar fluid className="p-4 w-full sticky top-0 z-20 dark:bg-gray-800">
             <div className="flex items-center gap-2">
@@ -71,16 +102,9 @@ export default function NavbarInstansi({
                 </span>
             </div>
             <div className="flex xs:hidden relative">
-                <button onClick={() => setTampilMenu(!tampilMenu)}>
+                <button onClick={() => handleAlertMenu()}>
                     <RiMenu3Line className="dark:text-white text-lg cursor-pointer" />
                 </button>
-                <div id="menu-dropdown-navbar-instansi" className={`absolute p-2 px-4 rounded-md mt-2 top-full end-full  w-48 shadow-md/40 dark:text-shadow-gray-950 bg-gray-100 dark:bg-gray-700 ${tampilMenu ? "block" : "hidden"}`}>
-                        <DropdownNavbarInstansi
-                            darkThemeInstansi={darkThemeInstansi}
-                            setDarkThemeInstansi={setDarkThemeInstansi}
-                        />
-            </div>
-
             </div>
         </Navbar>
     );

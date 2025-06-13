@@ -32,8 +32,8 @@ function BerandaInstansi() {
                                 />
                         </div>
 
-                        <div className="p-10 py-15 bg-gray-200 mt-7">
-                                <p className="text-center text-2xl ">Statistik laporan yang diselesaikan/bulan</p>
+                        <div className="p-5 sm:p-10 py-10 sm:py-15 bg-gray-200 mt-7">
+                                <p className="text-center text-xl sm:text-2xl ">Statistik laporan yang diselesaikan/bulan</p>
                         </div>
 
                         {/* box staf yang bertugas */}
