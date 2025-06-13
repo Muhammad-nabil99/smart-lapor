@@ -17,14 +17,16 @@ export default function TabelRiwayatInstansi() {
     return (
         <div className="overflow-x-auto mt-5 mb-2 py-3">
             <Table striped>
-                <TableHead className="divide-y">
-                    <TableHeadCell>No</TableHeadCell>
-                    <TableHeadCell>Nomor Laporan</TableHeadCell>
-                    <TableHeadCell>Nama</TableHeadCell>
-                    <TableHeadCell>Waktu Laporan</TableHeadCell>
-                    <TableHeadCell>Laporan</TableHeadCell>
-                    <TableHeadCell>Petugas</TableHeadCell>
-                    <TableHeadCell>Aksi</TableHeadCell>
+                <TableHead>
+                    <TableRow  className="divide-y">
+                        <TableHeadCell>No</TableHeadCell>
+                        <TableHeadCell>Nomor Laporan</TableHeadCell>
+                        <TableHeadCell>Nama</TableHeadCell>
+                        <TableHeadCell>Waktu Laporan</TableHeadCell>
+                        <TableHeadCell>Laporan</TableHeadCell>
+                        <TableHeadCell>Petugas</TableHeadCell>
+                        <TableHeadCell>Aksi</TableHeadCell>
+                    </TableRow>
                 </TableHead>
                 <TableBody>
                     {dataRiwayatAPI.map((data, index) => (
