@@ -39,6 +39,7 @@ export default function TabelLaporanInstansi() {
                             <TableCell>{data.petugas}</TableCell>
                             <TableCell>
                                 <Button
+                                    className="m-1"
                                     color="green"
                                     onClick={() =>
                                         navigate(
@@ -52,9 +53,6 @@ export default function TabelLaporanInstansi() {
                                     }
                                 >
                                     Detail
-                                </Button>
-                                <Button color="yellow" className="m-1">
-                                    Kerjakan
                                 </Button>
                             </TableCell>
                         </TableRow>
