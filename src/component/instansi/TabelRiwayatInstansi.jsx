@@ -41,6 +41,7 @@ export default function TabelRiwayatInstansi() {
                             <TableCell>
                                 <Button
                                     color="green"
+                                    className="m-1"
                                     onClick={() =>
                                         navigate(
                                             `/instansi/riwayat/${data.id_riwayat}/detail`,

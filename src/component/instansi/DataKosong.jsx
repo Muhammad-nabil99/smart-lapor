@@ -14,7 +14,7 @@ export default function DataKosong() {
                 className="object-cover rounded-[50%] w-50 h-50"
             />
 			<p>Data Tidak Tersedia</p>
-			<Button color="green" onClick={() => navigate(0)}>Kembali</Button>
+			<Button color="green" onClick={() => navigate(-1)}>Kembali</Button>
         </div>
     );
 }
