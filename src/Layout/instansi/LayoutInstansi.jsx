@@ -1,23 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavbarInstansi from "../../component/instansi/NavbarInstansi";
 import SidebarInstansi from "../../component/instansi/SidebarInstansi";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { notifikasi } from "../../features/ModalNotifikasi";
 
 export default function LayoutInstansi() {
-        const [darkThemeInstansi, setDarkThemeInstansi] = useState(false);
+    
+    const navigate = useNavigate();
+    const data_instansi = JSON.parse(localStorage.getItem("instansi"));
 
-        return (
-                <div className="flex flex-nowrap">
-                        {/* ... */}
-                        <SidebarInstansi darkThemeInstansi={darkThemeInstansi}/>
+    useEffect(() => {
+        if (!data_instansi) {
+            notifikasi("System Error", "Silahkan login ke akun anda terlebih dahulu", "error");
+            navigate("/instansi/masuk");
+            console.log("pindah");
+            return;
+        }
+    }, []);
 
-                        <main className="w-full overflow-x-hidden dark:bg-gray-900">
-                                {/* ... */}
-                                <NavbarInstansi darkThemeInstansi={darkThemeInstansi} setDarkThemeInstansi={setDarkThemeInstansi}/>
+    const [darkThemeInstansi, setDarkThemeInstansi] = useState(false);
 
-                                {/* isi utama nya */}
-                                <Outlet  />
-                        </main>
-                </div>
-        );
+    return (
+        <div className="flex flex-nowrap">
+            {/* ... */}
+            <SidebarInstansi darkThemeInstansi={darkThemeInstansi} />
+
+            <main className="w-full overflow-x-hidden dark:bg-gray-900">
+                {/* ... */}
+                <NavbarInstansi darkThemeInstansi={darkThemeInstansi} setDarkThemeInstansi={setDarkThemeInstansi} />
+
+                {/* isi utama nya */}
+                <Outlet />
+            </main>
+        </div>
+    );
 }

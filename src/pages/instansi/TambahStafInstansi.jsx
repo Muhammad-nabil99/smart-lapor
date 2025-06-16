@@ -28,17 +28,19 @@ export default function TambahStafInstansi() {
 
     const setelahFileDrop = useCallback((fileDiterima) => {
         setSedangDiDrag(false);
+        
+        const file = fileDiterima[0];
+        if( file) {
 
-        fileDiterima.forEach((file) => {
             const bacaFile = new FileReader();
+
             bacaFile.onload = () => {
-                console.log(file.name);
                 setNamaFoto(file.name);
                 setSizeFoto((file.size / 1024 ** 2).toFixed(2));
                 setUrlFoto(bacaFile.result);
             };
             bacaFile.readAsDataURL(file);
-        });
+        };
     }, []);
 
     const { getRootProps, getInputProps } = useDropzone({
@@ -47,9 +49,9 @@ export default function TambahStafInstansi() {
         onDragEnter: () => setSedangDiDrag(true),
         onDragLeave: () => setSedangDiDrag(false),
         accept: {
-            "image/*": [],
+            "image/*": [], 
         },
-    });
+    }); 
 
     const handleSubmitForm = (e) => {
 

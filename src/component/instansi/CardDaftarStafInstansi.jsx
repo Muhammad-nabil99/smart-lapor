@@ -1,5 +1,5 @@
 import CardInformasiInstansi from "./CardInformasiInstansi";
-import CardTambahInstansi from "./cardTambahInstansi";
+import CardTambahInstansi from "./CardTambahInstansi";
 
 export default function CardDaftarStafInstansi(props) {
         const data_props = {
