@@ -65,7 +65,7 @@ export default function NavbarInstansi({ darkThemeInstansi, setDarkThemeInstansi
                 </NavbarBrand>
             </div>
             <div className="text-sm items-center gap-2 hidden xs:flex">
-                <p className="line-clamp-1 dark:text-white">{data_instansi?.nama}</p>
+                <p className="line-clamp-1 dark:text-white capitalize">{data_instansi?.nama}</p>
                 <span
                     className="
                                         dark:bg-gray-600 bg-gray-100
