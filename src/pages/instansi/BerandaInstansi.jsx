@@ -10,11 +10,11 @@ function BerandaInstansi() {
         <section className="p-4">
             {/* kumpulan card laporan */}
             <div className="grid gird-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-5 smgap-7 md:gap-10">
-                <CardBerandaInstansi cardText="Laporan Masuk" cardColor="#FFD7D7" cardImage={laporanMasukImage} countNumber="10" />
+                <CardBerandaInstansi cardText="Laporan Masuk" cardColor="#FFD7D7" cardImage={laporanMasukImage} countNumber="1" />
 
-                <CardBerandaInstansi cardText="Laporan Diproses" cardColor="#C2D7FF" cardImage={laporanDiprosesImage} countNumber="10" />
+                <CardBerandaInstansi cardText="Laporan Diproses" cardColor="#C2D7FF" cardImage={laporanDiprosesImage} countNumber="1" />
 
-                <CardBerandaInstansi cardText="Laporan Selesai" cardColor="#BAFFC9" cardImage={laporanSelesaiImage} countNumber="10" />
+                <CardBerandaInstansi cardText="Laporan Selesai" cardColor="#BAFFC9" cardImage={laporanSelesaiImage} countNumber="0" />
             </div>
 
             <div className="text-gray-500 p-5 sm:p-10 py-10 sm:py-15 bg-gray-200/60 mt-7 dark:text-gray-300">
