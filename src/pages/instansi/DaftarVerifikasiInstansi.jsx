@@ -3,12 +3,15 @@ import { Button } from "flowbite-react";
 import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 
 import gambarMark from "../../assets/mark.png";
 import { notifikasi } from "../../features/ModalNotifikasi";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRegitrasiIntansi } from "../../features/instansi/useRegistrasiIntansi";
+import Swal from "sweetalert2";
 
 export default function DaftarVerifikasiInstansi() {
+    const { onRegistrasi, isLoading } = useRegitrasiIntansi();
     const navigate = useNavigate();
     const data = useLocation().state?.dataLanjutanInstansi;
 
@@ -19,21 +22,23 @@ export default function DaftarVerifikasiInstansi() {
         }
     }, []);
 
+            
+
     const [lihatFileNomorSertifikat, setLihatFileNomorSertifikat] = useState(false);
     const [lihatFileIzinOperasional, setLihatFileIzinOperasional] = useState(false);
     const [lihatFileSuratDomisili, setLihatFileSuratDomisili] = useState(false);
     const [lihatFileFoto, setLihatFileFoto] = useState(false);
 
-    const [namaFileNomorSertifikat, setNamaFileNomorSertifikat] = useState(null);
+    const [fileNomorSertifikat, setFileNomorSertifikat] = useState(null);
     const [urlBlobFileNomorSertifikat, setUrlBlobFileNomorSertifikat] = useState(null);
 
-    const [namaFileIzinOperasional, setNamaFileIzinOperasional] = useState(null);
+    const [fileIzinOperasional, setFileIzinOperasional] = useState(null);
     const [urlBlobFileIzinOperasional, setUrlBlobFileIzinOperasional] = useState(null);
 
-    const [namaFileSuratDomisili, setNamaFileSuratDomisili] = useState(null);
+    const [fileSuratDomisili, setFileSuratDomisili] = useState(null);
     const [urlBlobFileSuratDomisili, setUrlBlobFileSuratDomisili] = useState(null);
 
-    const [namaFileFoto, setNamaFileFoto] = useState(null);
+    const [fileFoto, setFileFoto] = useState(null);
     const [urlFileFoto, setUrlBlobFileFoto] = useState(null);
 
     // pdf
@@ -42,14 +47,13 @@ export default function DaftarVerifikasiInstansi() {
         const fileReader = new FileReader();
 
         if (file) {
+            setFileNomorSertifikat(file);
             fileReader.onload = () => {
                 const size = (file.size / 1024).toFixed(2); // satuan KB
                 if (size > 500) {
                     notifikasi("Gagal memuat data", "Ukuran file terlalu besar", "error");
                     return;
                 }
-
-                setNamaFileNomorSertifikat(file.name);
                 setUrlBlobFileNomorSertifikat(fileReader.result);
             };
             fileReader.readAsDataURL(file);
@@ -69,6 +73,7 @@ export default function DaftarVerifikasiInstansi() {
         const fileReader = new FileReader();
 
         if (file) {
+            setFileIzinOperasional(file);
             fileReader.onload = () => {
                 const size = (file.size / 1024).toFixed(2); // satuan KB
                 if (size > 500) {
@@ -76,7 +81,6 @@ export default function DaftarVerifikasiInstansi() {
                     return;
                 }
 
-                setNamaFileIzinOperasional(file.name);
                 setUrlBlobFileIzinOperasional(fileReader.result);
             };
             fileReader.readAsDataURL(file);
@@ -97,13 +101,13 @@ export default function DaftarVerifikasiInstansi() {
 
         if (file) {
             fileReader.onload = () => {
+                setFileSuratDomisili(file);
                 const size = (file.size / 1024).toFixed(2); // satuan KB
                 if (size > 500) {
                     notifikasi("Gagal memuat data", "Ukuran file terlalu besar", "error");
                     return;
                 }
 
-                setNamaFileSuratDomisili(file.name);
                 setUrlBlobFileSuratDomisili(fileReader.result);
             };
             fileReader.readAsDataURL(file);
@@ -124,6 +128,7 @@ export default function DaftarVerifikasiInstansi() {
         const fileReader = new FileReader();
 
         if (file) {
+            setFileFoto(file);
             fileReader.onload = () => {
                 const size = (file.size / 1024).toFixed(2); // satuan KB
                 if (size > 1000) {
@@ -131,7 +136,6 @@ export default function DaftarVerifikasiInstansi() {
                     return;
                 }
 
-                setNamaFileFoto(file.name);
                 setUrlBlobFileFoto(fileReader.result);
             };
             fileReader.readAsDataURL(file);
@@ -146,53 +150,42 @@ export default function DaftarVerifikasiInstansi() {
         onDrop: handleDocumentFoto,
     });
 
-    const handleSubmitDaftarVerifikasi = e => {
+    const handleSubmitDaftarVerifikasi = async e => {
         e.preventDefault();
-
-        if (!namaFileNomorSertifikat) {
+        
+        if (!fileNomorSertifikat) {
             notifikasi("Gagal melakukan registrasi", "input / isi file nomor sertifikat dalam format pdf terlebih dahulu", "error");
             return;
         }
-        if (!namaFileIzinOperasional) {
+        if (!fileIzinOperasional) {
             notifikasi("Gagal melakukan registrasi", "input / isi file izin operasional dalam format pdf terlebih dahulu", "error");
             return;
         }
-        if (!namaFileSuratDomisili) {
+        if (!fileSuratDomisili) {
             notifikasi("Gagal melakukan registrasi", "input / isi file surat domisili dalam format pdf terlebih dahulu", "error");
             return;
         }
-        if (!namaFileFoto) {
+        if (!fileFoto) {
             notifikasi("Gagal melakukan registrasi", "input / isi dokumen dalam format gambar terlebih dahulu", "error");
             return;
         }
 
+        // ini adalah data yang akan disimpan ke dalam database
+        const formData = new FormData();
         const data_tervalidasi = {
             ...data,
-                file_foto: namaFileFoto,
-                file_nomor_sertifikat: namaFileNomorSertifikat,
-                file_izin_operasional: namaFileIzinOperasional,
-                file_surat_domisili: namaFileSuratDomisili,
-                url_file_foto: urlFileFoto,
-                url_blob_file_nomor_sertifikat: urlBlobFileNomorSertifikat,
-                url_blob_file_izin_operasional: urlBlobFileIzinOperasional,
-                url_blob_file_surat_domisili: urlBlobFileSuratDomisili,
+            avatar: fileFoto,
+            nomor_sertifikat: fileNomorSertifikat,
+            izin_operasional: fileIzinOperasional,
+            surat_domisili: fileSuratDomisili,
+        };
+
+        for (const key in data_tervalidasi) {
+            formData.append(key.toLowerCase(), data_tervalidasi[key]);
         }
-
-        // kode tambahan untuk kirim data ke database
-        // { masukkan kode nya disini }
-        // lakukan if jika data tidak berhasil terkirim ke database (dikarenakan jaringan atau hal lain) -------------------
-        console.log(data_tervalidasi);
         
-        localStorage.setItem(
-            "instansi",
-            JSON.stringify({
-                instansi_masuk: true,
-                ...data_tervalidasi
-            })
-        );
-
-        notifikasi("Login Sukses", "", "success");
-        navigate("/instansi/beranda");
+        // regist data ke BE
+        onRegistrasi(formData);
     };
 
     return (
@@ -230,11 +223,17 @@ export default function DaftarVerifikasiInstansi() {
                     {/* input nomor sertifikat */}
                     <div className="my-3">
                         <div {...getRootPropsNomorSertifikat()} className="flex items-center gap-1 border border-gray-300 text-sm rounded-md">
-                            <span className="p-3 bg-gray-200 font-semibold tex-xs">{namaFileNomorSertifikat ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}</span>
-                            <span className="text-xs mx-1 text-gray-700 line-clamp-1">{namaFileNomorSertifikat ? namaFileNomorSertifikat : "Nomor Sertifikat"}</span>
+                            <span className="p-3 bg-gray-200 font-semibold tex-xs">
+                                {fileNomorSertifikat?.name ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}
+                            </span>
+                            <span className="text-xs mx-1 text-gray-700 line-clamp-1">
+                                {fileNomorSertifikat?.name ? fileNomorSertifikat?.name : "Nomor Sertifikat"}
+                            </span>
                         </div>
                         <input {...getInputPropsNomorSertifikat()} className="hidden" id="nomor-sertifikat" />
-                        {!namaFileNomorSertifikat && <span className="italic text-red-600 text-[.55rem] flex justify-end">*Dokumen yang diupload adalah file pdf / maksimal 500KB</span>}
+                        {!fileNomorSertifikat?.name && (
+                            <span className="italic text-red-600 text-[.55rem] flex justify-end">*Dokumen yang diupload adalah file pdf / maksimal 500KB</span>
+                        )}
 
                         {/* element untuk melihat file */}
                         <button
@@ -264,11 +263,17 @@ export default function DaftarVerifikasiInstansi() {
                     {/* input izin operasional */}
                     <div className="my-3">
                         <div {...getRootPropsIzinOperasional()} className="flex items-center gap-1 border border-gray-300 text-sm rounded-md">
-                            <span className="p-3 bg-gray-200 font-semibold tex-xs">{namaFileIzinOperasional ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}</span>
-                            <span className="text-xs mx-1 text-gray-700 line-clamp-1">{namaFileIzinOperasional ? namaFileIzinOperasional : "Izin Operasional"}</span>
+                            <span className="p-3 bg-gray-200 font-semibold tex-xs">
+                                {fileIzinOperasional?.name ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}
+                            </span>
+                            <span className="text-xs mx-1 text-gray-700 line-clamp-1">
+                                {fileIzinOperasional?.name ? fileIzinOperasional?.name : "Izin Operasional"}
+                            </span>
                         </div>
                         <input {...getInputPropsIzinOperasional()} className="hidden" id="izin-operasional" />
-                        {!namaFileIzinOperasional && <span className="italic text-red-600 text-[.55rem] flex justify-end">*Dokumen yang diupload adalah file pdf / maksimal 500KB</span>}
+                        {!fileIzinOperasional?.name && (
+                            <span className="italic text-red-600 text-[.55rem] flex justify-end">*Dokumen yang diupload adalah file pdf / maksimal 500KB</span>
+                        )}
 
                         {/* element untuk melihat file */}
                         <button
@@ -298,11 +303,17 @@ export default function DaftarVerifikasiInstansi() {
                     {/* input surat domisili */}
                     <div className="my-3">
                         <div {...getRootPropsSuratDomisili()} className="flex items-center gap-1 border border-gray-300 text-sm rounded-md">
-                            <span className="p-3 bg-gray-200 font-semibold tex-xs">{namaFileSuratDomisili ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}</span>
-                            <span className="text-xs mx-1 text-gray-700 line-clamp-1">{namaFileSuratDomisili ? namaFileSuratDomisili : "Surat Domisili"}</span>
+                            <span className="p-3 bg-gray-200 font-semibold tex-xs">
+                                {fileSuratDomisili?.name ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}
+                            </span>
+                            <span className="text-xs mx-1 text-gray-700 line-clamp-1">
+                                {fileSuratDomisili?.name ? fileSuratDomisili?.name : "Surat Domisili"}
+                            </span>
                         </div>
                         <input {...getInputPropsSuratDomisili()} className="hidden" id="surat-domisili" />
-                        {!namaFileSuratDomisili && <span className="italic text-red-600 text-[.55rem] flex justify-end">*Dokumen yang diupload adalah file pdf / maksimal 500KB</span>}
+                        {!fileSuratDomisili?.name && (
+                            <span className="italic text-red-600 text-[.55rem] flex justify-end">*Dokumen yang diupload adalah file pdf / maksimal 500KB</span>
+                        )}
 
                         {/* element untuk melihat file */}
                         <button
@@ -332,12 +343,16 @@ export default function DaftarVerifikasiInstansi() {
                     {/* input file gambar */}
                     <div className="my-3">
                         <div {...getRootPropsFoto()} className="flex items-center gap-1 border border-gray-300 text-sm rounded-md">
-                            <span className="p-3 bg-gray-200 font-semibold tex-xs">{namaFileFoto ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}</span>
-                            <span className="text-xs mx-1 text-gray-700 line-clamp-1 line-clamp-1">{namaFileFoto ? namaFileFoto : "Foto"}</span>
+                            <span className="p-3 bg-gray-200 font-semibold tex-xs">
+                                {fileFoto?.name ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}
+                            </span>
+                            <span className="text-xs mx-1 text-gray-700 line-clamp-1 line-clamp-1">{fileFoto?.name ? fileFoto?.name : "Foto"}</span>
                         </div>
                         <input {...getInputPropsFoto()} className="hidden" id="foto" />
-                        {!namaFileFoto && (
-                            <span className="italic text-red-600 text-[.55rem] flex justify-end">*Dokumen yang diunggah menggunakan extension .jpg, .jpeg, .png, .bmp / Maksimal 500 KB</span>
+                        {!fileFoto?.name && (
+                            <span className="italic text-red-600 text-[.55rem] flex justify-end">
+                                *Dokumen yang diunggah menggunakan extension .jpg, .jpeg, .png, .bmp / Maksimal 500 KB
+                            </span>
                         )}
 
                         {/* element untuk melihat file */}
@@ -349,7 +364,10 @@ export default function DaftarVerifikasiInstansi() {
                         >
                             Lihat File <i className="fas fa-arrow-right"></i>
                         </button>
-                        <div className={`fixed inset-0 p-12 px-5 sm:px-20 z-50 bg-gray-900/50 ${lihatFileFoto ? "block" : "hidden"}`} onClick={() => setLihatFileFoto(!lihatFileFoto)}>
+                        <div
+                            className={`fixed inset-0 p-12 px-5 sm:px-20 z-50 bg-gray-900/50 ${lihatFileFoto ? "block" : "hidden"}`}
+                            onClick={() => setLihatFileFoto(!lihatFileFoto)}
+                        >
                             <div className="relative w-full h-full">
                                 <button type="button" className="px-3 py-2 rounded-[50%] bg-red-500 z-10 absolute -top-12 -end-3 sm:-end-10">
                                     <i className="fas fa-close text-white"></i>

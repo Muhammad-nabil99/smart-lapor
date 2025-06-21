@@ -104,9 +104,10 @@ export default function SidebarIntansi({ darkThemeInstansi }) {
                     <div className="flex items-center gap-1">
                         <NavLink
                             to="/instansi/masuk"
-                            onClick={() => {localStorage.removeItem("instansi"); notifikasi(
-                                "Berhasil keluar dari akun", "Data login telah dihapus", "info"
-                            )}}
+                            onClick={() => {
+                                localStorage.removeItem('login-instansi')
+                                notifikasi("Berhasil keluar dari akun", "Data login telah dihapus", "info");
+                            }}
                             className={({ isActive }) =>
                                 isActive
                                     ? "group rounded-2xl w-10 h-10 text-white bg-[#64C983] px-1 py-3 border border-gray-400 flex items-center justify-center gap-2"

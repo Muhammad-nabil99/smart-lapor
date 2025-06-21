@@ -1,16 +1,20 @@
 import { Button, Checkbox, Dropdown, DropdownItem, Label } from "flowbite-react";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { GoogleMap, LoadScript, Marker, StandaloneSearchBox } from "@react-google-maps/api";
 
 import gambarMark from "../../assets/mark.png";
 import { notifikasi } from "../../features/ModalNotifikasi";
+import { IoLocationOutline } from "react-icons/io5";
 
 export default function DaftarLanjutanInstansi() {
     const navigate = useNavigate();
     const data = useLocation().state?.dataInstansi;
+    const [lokasi, setLokasi] = useState({ lat: -4.032654599794322, lng: 122.4925116831108 });
+    const mapRef = useRef();
+    const searchBoxRef = useRef(null);
 
     // memastikan bahwa tahap sebelumnya sudah diisi dan tidak dilewati
     useEffect(() => {
@@ -24,19 +28,19 @@ export default function DaftarLanjutanInstansi() {
     const [tampilkanKataSandi, setTampilkanKataSandi] = useState(false);
     const [konfirmasiKataSandi, setKonfirmasiKataSandi] = useState("");
 
-    const [namaFile, setNamaFile] = useState(null);
+    const [file, setFile] = useState(null);
     const [urlFileBlob, setUrlFileBlob] = useState(null);
     const [lihatFile, setLihatFile] = useState(false);
 
     const handleFIleAkta = useCallback(file_input => {
-        const file = file_input[0];
+        const file_ = file_input[0];
+        setFile(file_);
 
-        if (file) {
-            setNamaFile(file.name);
+        if (file_) {
             const fileReader = new FileReader();
 
             fileReader.onload = () => {
-                const size = (file.size / 1024).toFixed(2);
+                const size = (file_.size / 1024).toFixed(2);
 
                 if (size > 500) {
                     notifikasi("Tidak dapat membaca file", "Ukuran file tidak boleh lebih dari 500KB", "error");
@@ -46,7 +50,7 @@ export default function DaftarLanjutanInstansi() {
                 setUrlFileBlob(fileReader.result);
             };
 
-            fileReader.readAsDataURL(file);
+            fileReader.readAsDataURL(file_);
         }
     }, []);
 
@@ -57,6 +61,37 @@ export default function DaftarLanjutanInstansi() {
             "application/pdf": [], // pdf only
         },
     });
+
+    const handlePlaceChanged = () => {
+        const places = searchBoxRef.current.getPlaces();
+        if (places.length === 0) return;
+
+        const place = places[0];
+        const location = {
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+        };
+
+        setLokasi(location);
+        mapRef.current.panTo(location);
+    };
+
+    const handleMapClick = event => {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
+        setLokasi({ lat, lng });
+    };
+
+    const handleLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                const lat = pos.coords.latitude;
+                const lon = pos.coords.longitude;
+                setLokasi({ lat: lat, lng: lon });
+                notifikasi("Lokasi Berhasil dideteksi", "", "success");
+            });
+        }
+    };
 
     const handleSubmitDaftarLanjutan = e => {
         e.preventDefault();
@@ -69,7 +104,7 @@ export default function DaftarLanjutanInstansi() {
             notifikasi("Gagal ke tahap selanjutnya", "Pilih cabang terlebih dahulu", "error");
             return;
         }
-        if (!namaFile) {
+        if (!file) {
             notifikasi("Gagal ke tahap selanjutnya", "Masukkan file akta terlebih dahulu", "error");
             return;
         }
@@ -77,22 +112,26 @@ export default function DaftarLanjutanInstansi() {
             state: {
                 dataLanjutanInstansi: {
                     ...data,
-                    file_akta: namaFile,
-                    url_blob_file_akta: urlFileBlob,
-                    cabang: cabang,
-                    kata_sandi: kataSandi,
-                    konfirmasi_kata_sandi: konfirmasiKataSandi,
+                    latitude: lokasi.lat,
+                    longitude: lokasi.lng,
+                    akta_kemenkumham: file,
+                    nama_cabang: cabang,
+                    password: kataSandi,
                 },
             },
         });
     };
+
+    useEffect(() => {
+        console.log(lokasi);
+    }, [lokasi]);
 
     return (
         <section className="p-4 h-[100vh] flex items-center justify-center">
             <form
                 id="card-daftar"
                 onSubmit={e => handleSubmitDaftarLanjutan(e)}
-                className="flex flex-col w-[95%] xs:w-[80%] sm:w-[55%] md:w-[40%] lg:w-[350px] justify-center border rounded-md border-gray-300 p-6 shadow-md/20"
+                className="flex flex-col w-[95%] xs:w-[80%] sm:w-[57%] md:w-[42%] lg:w-[350px] justify-center border rounded-md border-gray-300 p-6 shadow-md/20"
             >
                 <svg className="w-[150px] mx-auto" viewBox="0 0 446 84" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -171,15 +210,46 @@ export default function DaftarLanjutanInstansi() {
                         </Label>
                     </div>
 
+                    {/* input lokasi */}
+                    <div className="mt-4">
+                        <LoadScript googleMapsApiKey={import.meta.env.VITE_API_KEY_MAPS} libraries={["places"]}>
+                            <div className="flex items-center gap-1 border-gray-200 border rounded-tl-md rounded-tr-md mb-0.5">
+                                <button className="p-2 bg-gray-200 rounded-tl-md" type="button" onClick={() => handleLocation()}>
+                                    <IoLocationOutline className="text-base" />
+                                </button>
+                                <StandaloneSearchBox onLoad={ref => (searchBoxRef.current = ref)} onPlacesChanged={handlePlaceChanged}>
+                                    <input type="text" placeholder="Cari lokasi..." className="border-none w-full outline-none focus:outline-none text-sm" />
+                                </StandaloneSearchBox>
+                            </div>
+                            <GoogleMap
+                                mapContainerStyle={{ width: "100%", height: "200px" }}
+                                center={lokasi}
+                                zoom={14}
+                                mapTypeId="hybrid"
+                                onLoad={map => (mapRef.current = map)}
+                                onClick={handleMapClick}
+                            >
+                                <Marker position={lokasi} />
+                            </GoogleMap>
+
+                            <p className="text-[.65rem] mt-1">
+                                Titik lokasi:{" "}
+                                <span className="text-gray-500">
+                                    {lokasi.lat}, {lokasi.lng}
+                                </span>
+                            </p>
+                        </LoadScript>
+                    </div>
+
                     {/* input file akta pdf only */}
-                    <div className="my-3">
+                    <div className="mb-3 mt-5">
                         <div {...getRootProps()} className="flex items-center gap-1 border border-gray-300 text-sm rounded-md">
-                            <span className={`p-3 bg-${namaFile ? "green" : "gray"}-200 font-semibold text-xs`}>
-                                {namaFile ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}
+                            <span className={`p-3 bg-${file?.name ? "green" : "gray"}-200 font-semibold text-xs`}>
+                                {file?.name ? <img className="w-5 h-5 object-contain" src={gambarMark} alt="pdf icon" /> : "File"}
                             </span>
-                            <span className="text-xs mx-1 text-gray-700 line-clamp-1">{namaFile ? namaFile : "File Akta"}</span>
+                            <span className="text-xs mx-1 text-gray-700 line-clamp-1">{file?.name ? file?.name : "File Akta"}</span>
                         </div>
-                        {!namaFile && <span className="italic text-red-500 text-[.6rem] flex justify-end">*Dokumen yang diupload adalah file pdf</span>}
+                        {!file?.name && <span className="italic text-red-500 text-[.6rem] flex justify-end">*Dokumen yang diupload adalah file pdf</span>}
 
                         {/* element untuk melihat file */}
                         <button
@@ -224,5 +294,5 @@ export default function DaftarLanjutanInstansi() {
 const styleInput = `
         p-3 rounded-sm border border-gray-300
         dark:boder-gray-600 dark:text-white
-        placeholder:text-gray-500 text-xs w-full
+        placeholder:text-gray-500 text-xs sm:text-sm w-full
 `;

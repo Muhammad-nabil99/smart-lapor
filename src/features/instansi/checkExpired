@@ -1,0 +1,8 @@
+export const checkExpired = expiredAt => {
+    if (Date.now() > expiredAt) {
+        localStorage.removeItem("login-instansi")
+        notifikasi("Akun otomatis keluar", "Token anda telah kadaluwarsa", "error")
+        window.location.href = "/instansi/masuk"
+        return;
+    }
+}

@@ -3,18 +3,22 @@ import NavbarInstansi from "../../component/instansi/NavbarInstansi";
 import SidebarInstansi from "../../component/instansi/SidebarInstansi";
 import { Outlet, useNavigate } from "react-router-dom";
 import { notifikasi } from "../../features/ModalNotifikasi";
+import { useQueryClient } from "@tanstack/react-query";
+import { checkExpired } from "../../features/instansi/checkExpired";
 
 export default function LayoutInstansi() {
     
+    const clientQuery = useQueryClient();
     const navigate = useNavigate();
-    const data_instansi = JSON.parse(localStorage.getItem("instansi"));
-
+    const check_login = JSON.parse(localStorage.getItem("login-instansi"));
+    
     useEffect(() => {
-        if (!data_instansi) {
-            notifikasi("System Error", "Silahkan login ke akun anda terlebih dahulu", "error");
+        if (!check_login) {
+            notifikasi("Gagal Login", "Token anda kadaluawarsa", "error");
             navigate("/instansi/masuk");
-            console.log("pindah");
             return;
+        } else {
+            checkExpired(check_login.expiredAt);
         }
     }, []);
 

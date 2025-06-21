@@ -8,7 +8,7 @@ import { RiMenu3Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 
 export default function NavbarInstansi({ darkThemeInstansi, setDarkThemeInstansi }) {
-    const data_instansi = JSON.parse(localStorage.getItem("instansi"));
+    const data_login = JSON.parse(localStorage.getItem('login-instansi'));
 
     useEffect(() => {
         darkThemeInstansi
@@ -65,7 +65,7 @@ export default function NavbarInstansi({ darkThemeInstansi, setDarkThemeInstansi
                 </NavbarBrand>
             </div>
             <div className="text-sm items-center gap-2 hidden xs:flex">
-                <p className="line-clamp-1 dark:text-white capitalize">{data_instansi?.nama}</p>
+                <p className="line-clamp-1 dark:text-white">{data_login?.email}</p>
                 <span
                     className="
                                         dark:bg-gray-600 bg-gray-100

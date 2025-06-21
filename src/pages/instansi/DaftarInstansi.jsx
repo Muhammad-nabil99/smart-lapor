@@ -5,22 +5,21 @@ import { NavLink, useNavigate } from "react-router-dom";
 export default function DaftarInstansi() {
     const navigate = useNavigate();
 
-    const [NIP, setNIP] = useState("");
-    const [nama, setNama] = useState("");
+    const [NPWP, setNPWP] = useState("");
     const [pemimpin, setPemimpin] = useState("");
     const [instansi, setInstansi] = useState("");
+    const [kategori, setKategori] = useState("");
     const [email, setEmail] = useState("");
 
     const handleSubmitDaftar = e => {
         e.preventDefault();
-
         navigate("/instansi/daftar-lanjutan", {
             state: {
                 dataInstansi: {
-                    NIP: NIP,
-                    nama: nama,
-                    pemimpin: pemimpin,
-                    instansi: instansi,
+                    npwp: NPWP,
+                    nama_pimpinan: pemimpin,
+                    kategori: JSON.stringify([kategori.toLowerCase()]),
+                    nama_instansi: instansi,
                     email: email,
                 },
             },
@@ -61,24 +60,24 @@ export default function DaftarInstansi() {
                 <div className="mt-4">
                     <p className="font-bold text-center text-base mb-3">Daftar</p>
 
-                    {/* NIP */}
+                    {/* NPWP */}
                     <div className="mb-3">
-                        <input value={NIP} className={styleInput} type="number" placeholder="NIP" onChange={e => setNIP(e.target.value)} required />
+                        <input value={NPWP} className={styleInput} type="text" placeholder="NPWP" onChange={e => setNPWP(e.target.value)} required />
                     </div>
 
-                    {/* nama */}
-                    <div className="mb-3">
-                        <input value={nama} className={styleInput} type="text" placeholder="Nama" onChange={e => setNama(e.target.value)} required />
-                    </div>
-                    
                     {/* pemimpin */}
                     <div className="mb-3">
-                        <input value={pemimpin} className={styleInput} type="text" placeholder="Pemimpin" onChange={e => setPemimpin(e.target.value)} required />
+                        <input value={pemimpin} className={styleInput} type="text" placeholder="Nama Pemimpin" onChange={e => setPemimpin(e.target.value)} required />
                     </div>
 
                     {/* instansi */}
                     <div className="mb-2">
-                        <input value={instansi} className={styleInput} type="text" placeholder="Instansi" onChange={e => setInstansi(e.target.value)} required />
+                        <input value={instansi} className={styleInput} type="text" placeholder="Nama Instansi" onChange={e => setInstansi(e.target.value)} required />
+                    </div>
+
+                    {/* kategori */}
+                    <div className="mb-2">
+                        <input value={kategori} className={styleInput} type="text" placeholder="Kategori: banjir, kebakaran, dsb" onChange={e => setKategori(e.target.value)} required />
                     </div>
 
                     {/* email */}

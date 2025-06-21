@@ -1,37 +1,29 @@
-import gambarIconGoogle from "../../assets/google.png";
 
 import { Button } from "flowbite-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { notifikasi } from "../../features/ModalNotifikasi";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { data } from "../../services/dummyAPI/dataFakeInstansi";
-
+import { useLoginInstansi } from "../../features/instansi/useLoginInstansi";
+    
 export default function LoginInstansi() {
     const navigate = useNavigate();
+    const { onLoginInstansi, isLoading } = useLoginInstansi();
+    
+    const location = useLocation();
+    const email_ = location.state?.email;
+    const pwd_ = location.state?.password;
 
     const [email, setEmail] = useState("");
     const [kataSandi, setKataSandi] = useState("");
 
     const handleSubmitMasuk = e => {
         e.preventDefault();
-
-        // ---------------------
-        // disini adalah kode tambahan untuk mengambil data user dari database sesuai dengan data yang terinput
-        // masukkan kode nya disini
-        // ---------------------
-
-        // anggaplah data nya seperti ini, nanti data sesungguhnya dari database
-        const data_ = data;
-
-        if (email === data_.email && kataSandi === data_.kata_sandi) {
-            localStorage.setItem("instansi", JSON.stringify({ ...data_ }));
-            notifikasi("Berhasil masuk ke dalam akun", "", "success");
-            navigate("/instansi/beranda");
-            return;
+        
+        if (email_ && pwd_) {
+            setEmail(email_); setKataSandi(pwd_);
         }
+        onLoginInstansi({email, password:kataSandi});
 
-        notifikasi("Gagal masuk ke dalam akun", "email atau kata sandi anda salah", "error");
     };
 
     return (
@@ -39,7 +31,7 @@ export default function LoginInstansi() {
             <form
                 id="card-daftar"
                 onSubmit={e => handleSubmitMasuk(e)}
-                className="flex flex-col w-[95%] xs:w-[80%] sm:w-[55%] md:w-[40%] lg:w-[350px] justify-center border rounded-md border-gray-300 p-6 shadow-md/20"
+                className="dark:text-white flex flex-col w-[95%] xs:w-[80%] sm:w-[55%] md:w-[40%] lg:w-[350px] justify-center border rounded-md border-gray-300 p-6 shadow-md/20"
             >
                 {/* logo */}
                 <svg className="w-[150px] mx-auto" viewBox="0 0 446 84" xmlns="http://www.w3.org/2000/svg">
